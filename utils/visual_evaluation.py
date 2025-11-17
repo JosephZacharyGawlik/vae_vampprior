@@ -8,7 +8,7 @@ def plot_histogram( x, dir, mode ):
     fig = plt.figure()
 
     # the histogram of the data
-    n, bins, patches = plt.hist(x, 100, normed=True, facecolor='blue', alpha=0.5)
+    n, bins, patches = plt.hist(x, 100, density=True, facecolor='blue', alpha=0.5)
 
     plt.xlabel('Log-likelihood value')
     plt.ylabel('Probability')

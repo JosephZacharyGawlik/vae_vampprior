@@ -283,7 +283,7 @@ def load_freyfaces(args, TRAIN = 1565, VAL = 200, TEST = 200, **kwargs):
 
     # start processing
     with open('datasets/Freyfaces/freyfaces.pkl', 'rb') as f:
-        data = pickle.load(f)
+        data = pickle.load(f, encoding='latin1')
 
     data = (data[0] + 0.5) / 256.
 

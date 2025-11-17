@@ -75,7 +75,7 @@ def experiment_vae(args, train_loader, val_loader, test_loader, model, optimizer
             break
 
     # FINAL EVALUATION
-    best_model = torch.load(dir + args.model_name + '.model')
+    best_model = torch.load(dir + args.model_name + '.model', weights_only=False)
     test_loss, test_re, test_kl, test_log_likelihood, train_log_likelihood, test_elbo, train_elbo = evaluate(args, best_model, train_loader, test_loader, 9999, dir, mode='test')
 
     print('FINAL EVALUATION ON TEST SET\n'

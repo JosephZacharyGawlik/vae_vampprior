@@ -32,9 +32,9 @@ def evaluate_vae(args, model, train_loader, data_loader, epoch, dir, mode):
         # calculate loss function
         loss, RE, KL = model.calculate_loss(x, average=True)
 
-        evaluate_loss += loss.data[0]
-        evaluate_re += -RE.data[0]
-        evaluate_kl += KL.data[0]
+        evaluate_loss += loss.data.item()
+        evaluate_re += -RE.data.item()
+        evaluate_kl += KL.data.item()
 
         # print N digits
         if batch_idx == 1 and mode == 'validation':

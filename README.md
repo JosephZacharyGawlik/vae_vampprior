@@ -6,6 +6,16 @@ This is a PyTorch implementation of a new prior ("Variational Mixture of Posteri
 The code is compatible with:
 * `pytorch 0.2.0`
 
+`pyproject.toml` includes valid requirements.
+
+## Setup
+Download static MNIST:
+```bash
+wget -P /path/to/your/folder \
+http://www.cs.toronto.edu/~larocheh/public/datasets/binarized_mnist/binarized_mnist_{train,valid,test}.amat
+```
+
+
 ## Data
 The experiments can be run on the following datasets:
 * static MNIST: links to the datasets can found at [link](https://github.com/yburda/iwae/tree/master/datasets/BinaryMNIST);
@@ -22,6 +32,15 @@ The experiments can be run on the following datasets:
 ```bash
 python experiment.py
 ```
+
+To run in background:
+```bash
+tmux new -s mysession   # start new session
+python experiment.py     # run your script
+# Press Ctrl+B then D to detach
+tmux attach -t mysession  # reattach later
+```
+
 ## Models
 You can run a vanilla VAE, a one-layered VAE or a two-layered HVAE with the standard prior or the VampPrior by setting `model_name` argument to either: (i) `vae` or `hvae_2level` for MLP, (ii) `convvae_2level` for convnets, (iii) `pixelhvae_2level` for (ii) with a PixelCNN-based decoder, and specifying `prior` argument to either `standard` or `vampprior`.
 
