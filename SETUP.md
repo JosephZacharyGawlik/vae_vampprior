@@ -66,3 +66,17 @@ You'll likely need more storage. If you already created an instance, use these s
 4. Change the Size (I used 40GB).
 
 5. Click Save.
+
+6. Run this to use disk space:
+```bash
+# Install Utils
+sudo apt update && sudo apt install cloud-guest-utils -y
+
+# Grow Partition
+sudo growpart /dev/sda 1
+
+# Expand Filesystem
+sudo resize2fs /dev/sda1
+```
+
+7. Use `df -h` to see new space allocation. The line with `/` shows you how much is available.
