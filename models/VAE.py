@@ -211,7 +211,7 @@ class VAE(Model):
             means = z_p_mean.unsqueeze(0)
             logvars = z_p_logvar.unsqueeze(0)
 
-            a = log_Normal_diag(z_expand, means, logvars, dim=2) - math.log(C)  # MB x C
+            a = log_Normal_diag(z_expand, means, logvars, dim=2)  # MB x C
 
             # --- WEIGHTING LOGIC --- TODO: this is just copied... i have no idea what it does
             if self.args.weighted:

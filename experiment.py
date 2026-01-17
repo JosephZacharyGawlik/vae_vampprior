@@ -70,6 +70,9 @@ parser.add_argument('--model_name', type=str, default='vae', metavar='MN',
 parser.add_argument('--prior', type=str, default='vampprior', metavar='P',
                     help='prior: standard, vampprior')
 
+parser.add_argument('--weighted', action='store_true', default=False,
+                    help='whether to use weighted mixture for VampPrior')
+
 parser.add_argument('--input_type', type=str, default='binary', metavar='IT',
                     help='type of the input: binary, gray, continuous')
 
