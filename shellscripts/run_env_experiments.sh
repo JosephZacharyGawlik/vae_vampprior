@@ -22,7 +22,7 @@ uv run experiment.py \
     --pseudoinputs_std "$PSEUDOINPUTS_STD" \
     --S "$S_SAMPLES" \
     --MB "$MB_SIZE" \
-    $( [ "$ACTIVATION" == "None" ] && echo "--activation" ) \
+    $( [ "$ACTIVATION" != "None" ] && echo "--activation" ) \
     $( [ "$NO_CUDA" == "True" ] && echo "--no-cuda" ) \
     $( [ "$DYNAMIC_BINARIZATION" == "True" ] && echo "--dynamic_binarization" ) \
     $( [ "$USE_TRAINING_DATA_INIT" == "True" ] && echo "--use_training_data_init" )

@@ -7,12 +7,8 @@ set -a
 source .env.experiments
 set +a
 
-# --- VAMPPRIOR SPECIFICS ---
+# Prior
 export PRIOR=vampprior
-export NUMBER_COMPONENTS=500
-export PSEUDOINPUTS_MEAN="-0.05"
-export PSEUDOINPUTS_STD=0.01
-export USE_TRAINING_DATA_INIT=False
 
 for SEED in $SEEDS
 do

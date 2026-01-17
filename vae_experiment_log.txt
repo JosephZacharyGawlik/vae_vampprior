@@ -24,3 +24,15 @@ KL: 65.10
 
 Namespace(batch_size=100, test_batch_size=100, epochs=2000, lr=0.0005, early_stopping_epochs=50, warmup=100, no_cuda=False, seed=14, z1_size=40, z2_size=40, input_size=[1, 28, 20], activation=None, number_components=500, pseudoinputs_mean=0.5, pseudoinputs_std=0.02, use_training_data_init=False, model_name='vae', prior='vampprior', input_type='gray', S=5000, MB=100, dataset_name='freyfaces', dynamic_binarization=False, cuda=False, model_signature='2026-01-17 10:16:09')
 Namespace(batch_size=100, test_batch_size=100, epochs=20, lr=0.0005, early_stopping_epochs=50, warmup=100, no_cuda=False, seed=14, z1_size=40, z2_size=40, input_size=[1, 28, 28], activation='None', number_components=500, pseudoinputs_mean=0.05, pseudoinputs_std=0.01, use_training_data_init=False, model_name='vae', prior='vampprior', input_type='binary', S=5000, MB=100, dataset_name='static_mnist', dynamic_binarization=False, cuda=False, model_signature='2026-01-17 11:20:36')
+Namespace(batch_size=100, test_batch_size=100, epochs=20, lr=0.0005, early_stopping_epochs=50, warmup=100, no_cuda=False, seed=14, z1_size=40, z2_size=40, input_size=[1, 28, 28], activation=None, number_components=500, pseudoinputs_mean=0.05, pseudoinputs_std=0.01, use_training_data_init=False, model_name='vae', prior='vampprior', input_type='binary', S=5000, MB=100, dataset_name='static_mnist', dynamic_binarization=False, cuda=True, model_signature='2026-01-17 11:49:07')
+FINAL EVALUATION ON TEST SET
+LogL (TEST): 105.14
+LogL (TRAIN): 0.00
+ELBO (TEST): 115.71
+ELBO (TRAIN): 112.61
+Loss: 115.76
+RE: 50.02
+KL: 65.74
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Namespace(batch_size=100, test_batch_size=100, epochs=20, lr=0.0005, early_stopping_epochs=50, warmup=100, no_cuda=False, seed=0, z1_size=40, z2_size=40, input_size=[1, 28, 28], activation=None, number_components=500, pseudoinputs_mean=0.05, pseudoinputs_std=0.01, use_training_data_init=False, model_name='vae', prior='vampprior', input_type='binary', S=5000, MB=100, dataset_name='static_mnist', dynamic_binarization=False, cuda=True, model_signature='2026-01-17 12:01:47')
