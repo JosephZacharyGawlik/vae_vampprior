@@ -25,7 +25,9 @@ def evaluate_vae(args, model, train_loader, data_loader, epoch, dir, mode):
     for batch_idx, (data, target) in enumerate(data_loader):
         if args.cuda:
             data, target = data.cuda(), target.cuda()
-        data, target = Variable(data, volatile=True), Variable(target)
+
+        with torch.no_grad():
+            data, target = Variable(data), Variable(target)
 
         x = data
 
