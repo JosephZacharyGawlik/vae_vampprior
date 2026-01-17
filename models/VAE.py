@@ -55,6 +55,9 @@ class VAE(Model):
         if self.args.prior == 'vampprior':
             self.add_pseudoinputs()
 
+            if self.args.weighted:
+                self.w = nn.Parameter(torch.ones(self.args.number_components, 1))
+
     # AUXILIARY METHODS
     def calculate_loss(self, x, beta=1., average=False):
         '''
@@ -209,6 +212,16 @@ class VAE(Model):
             logvars = z_p_logvar.unsqueeze(0)
 
             a = log_Normal_diag(z_expand, means, logvars, dim=2) - math.log(C)  # MB x C
+
+            # --- WEIGHTING LOGIC --- TODO: this is just copied... i have no idea what it does
+            if self.args.weighted:
+                # Use log_softmax to ensure weights sum to 1 in probability space
+                log_weights = torch.nn.functional.log_softmax(self.w, dim=0) # C x 1
+                a = a + log_weights.view(1, -1) # Add log(w_k) to each component's log-prob
+            else:
+                a = a - math.log(C) # Standard uniform weighting
+            # -----------------------
+
             a_max, _ = torch.max(a, 1)  # MB x 1
 
             # calculte log-sum-exp
