@@ -80,3 +80,7 @@ sudo resize2fs /dev/sda1
 ```
 
 7. Use `df -h` to see new space allocation. The line with `/` shows you how much is available.
+
+## Add a GPU.
+
+Recommendation: A Tesla T4 is usually the most cost-effective for MNIST experiments.

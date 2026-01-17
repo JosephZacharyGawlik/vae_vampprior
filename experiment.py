@@ -47,7 +47,7 @@ parser.add_argument('--z1_size', type=int, default=40, metavar='M1',
                     help='latent size')
 parser.add_argument('--z2_size', type=int, default=40, metavar='M2',
                     help='latent size')
-parser.add_argument('--input_size', type=int, default=[1, 28, 28], metavar='D',
+parser.add_argument('--input_size', type=int, nargs=3, default=[1, 28, 28], metavar='D',
                     help='input size')
 
 parser.add_argument('--activation', type=str, default=None, metavar='ACT',
