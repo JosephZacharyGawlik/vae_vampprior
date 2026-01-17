@@ -52,3 +52,17 @@ uv sync
 # Activate the environment
 source .venv/bin/activate
 ```
+
+## Change Disk Space
+
+You'll likely need more storage. If you already created an instance, use these steps:
+
+1. Go to the Google Cloud Disks page.
+
+2. Click on the name of your disk (it usually matches your instance name).
+
+3. Click Edit at the top.
+
+4. Change the Size (I used 40GB).
+
+5. Click Save.
