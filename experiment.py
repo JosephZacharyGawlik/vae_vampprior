@@ -68,13 +68,20 @@ parser.add_argument('--model_name', type=str, default='vae', metavar='MN',
                     help='model name: vae, hvae_2level, convhvae_2level, pixelhvae_2level')
 
 parser.add_argument('--prior', type=str, default='vampprior', metavar='P',
-                    help='prior: standard, vampprior')
+                    help='prior: standard, vampprior, flowprior')
 
 parser.add_argument('--weighted', action='store_true', default=False,
                     help='whether to use weighted mixture for VampPrior')
 
 parser.add_argument('--input_type', type=str, default='binary', metavar='IT',
                     help='type of the input: binary, gray, continuous')
+
+# Normalizing Flow Prior settings
+parser.add_argument('--flow_layers', type=int, default=8,
+                    help='Number of layers in the Normalizing Flow (default: 8)')
+
+parser.add_argument('--flow_hidden_dim', type=int, default=128,
+                    help='Hidden dimension size for the Flow layers (default: 128)')
 
 # experiment
 parser.add_argument('--S', type=int, default=5000, metavar='SLL',
@@ -105,7 +112,16 @@ kwargs = {'num_workers': 1, 'pin_memory': True} if args.cuda else {}
 def run(args, kwargs):
     args.model_signature = str(datetime.datetime.now())[0:19]
 
-    model_name = args.dataset_name + '_' + args.model_name + '_' + args.prior + '(K_' + str(args.number_components) + ')' + '_wu(' + str(args.warmup) + ')' + '_z1_' + str(args.z1_size) + '_z2_' + str(args.z2_size)
+    # Update model_name to include Flow info if relevant
+    base_name = f"{args.dataset_name}_{args.model_name}_{args.prior}"
+    if args.prior == 'vampprior':
+        config_info = f"_K{args.number_components}_weighted{args.weighted}"
+    elif args.prior == 'flowprior':
+        config_info = f"_L{args.flow_layers}_H{args.flow_hidden_dim}"
+    else:
+        config_info = ""
+
+    model_name = base_name + config_info + f"_z1_{args.z1_size}_seed{args.seed}"
 
     # DIRECTORY FOR SAVING
     snapshots_path = 'snapshots/'
