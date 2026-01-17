@@ -58,6 +58,10 @@ class VAE(Model):
             if self.args.weighted:
                 self.w = nn.Parameter(torch.ones(self.args.number_components, 1))
 
+        # add normalizing flow if FlowPrior
+        if self.args.prior == 'flowprior':
+            self.flow = FlowPrior(dim=self.args.z1_size, hidden_dim=self.args.flow_hidden_dim, n_layers=self.args.flow_layers)
+
     # AUXILIARY METHODS
     def calculate_loss(self, x, beta=1., average=False):
         '''
@@ -160,9 +164,35 @@ class VAE(Model):
                 z_sample_rand = z_sample_rand.cuda()
 
         elif self.args.prior == 'vampprior':
-            means = self.means(self.idle_input)[0:N]
+            # Get all pseudo-inputs (e.g., 500 of them)
+            all_pseudo_inputs = self.means(self.idle_input)
+            num_available = all_pseudo_inputs.size(0)
+
+            if self.args.weighted:
+                # 1. Use Weights: Sample based on learned importance
+                log_weights = torch.nn.functional.log_softmax(self.w, dim=0).view(-1)
+                weights = torch.exp(log_weights)
+                idx = torch.multinomial(weights, N, replacement=True)
+            else:
+                # 2. No Weights: Sample UNIFORMLY (better than [0:N])
+                idx = torch.randint(0, num_available, (N,))
+
+            # Use the selected indices
+            means = all_pseudo_inputs[idx]
+
+            # Pass through encoder to get latent distribution
             z_sample_gen_mean, z_sample_gen_logvar = self.q_z(means)
             z_sample_rand = self.reparameterize(z_sample_gen_mean, z_sample_gen_logvar)
+
+        elif self.args.prior == 'flowprior':
+            # 1. Start with simple noise z0 (Base Distribution)
+            z0 = Variable(torch.FloatTensor(N, self.args.z1_size).normal_())
+            if self.args.cuda:
+                z0 = z0.cuda()
+            
+            # 2. Map simple z0 to complex z (FORWARD pass)
+            # This 'warps' the Gaussian sphere into the learned prior shape
+            z_sample_rand, _ = self.flow.forward(z0)
 
         samples_rand, _ = self.p_x(z_sample_rand)
         return samples_rand
@@ -213,7 +243,7 @@ class VAE(Model):
 
             a = log_Normal_diag(z_expand, means, logvars, dim=2)  # MB x C
 
-            # --- WEIGHTING LOGIC --- TODO: this is just copied... i have no idea what it does
+            # --- WEIGHTING LOGIC --- 
             if self.args.weighted:
                 # Use log_softmax to ensure weights sum to 1 in probability space
                 log_weights = torch.nn.functional.log_softmax(self.w, dim=0) # C x 1
@@ -226,6 +256,16 @@ class VAE(Model):
 
             # calculte log-sum-exp
             log_prior = a_max + torch.log(torch.sum(torch.exp(a - a_max.unsqueeze(1)), 1))  # MB x 1
+
+        elif self.args.prior == 'flowprior':
+            # 1. Map complex z (from encoder) back to simple z0 (Inverse pass)
+            z0, log_det_jacobian = self.flow.inverse(z)
+
+            # 2. Evaluate likelihood of z0 under the BASE distribution (Standard Normal)
+            log_p_z0 = log_Normal_standard(z0, dim=1)
+
+            # 3. Combine to get the log-density of the original z
+            log_prior = log_p_z0 + log_det_jacobian
 
         else:
             raise Exception('Wrong name of the prior!')
