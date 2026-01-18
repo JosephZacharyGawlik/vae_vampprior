@@ -18,6 +18,8 @@ from utils.visual_evaluation import plot_histogram
 from utils.nn import he_init, GatedDense, NonLinear
 
 from models.Model import Model
+
+from models.FlowPrior import FlowPrior
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 #=======================================================================================================================
