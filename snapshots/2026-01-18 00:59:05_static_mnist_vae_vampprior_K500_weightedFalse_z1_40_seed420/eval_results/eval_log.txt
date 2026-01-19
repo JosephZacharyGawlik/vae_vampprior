@@ -1,0 +1,2 @@
+/root/workspace/vae_vampprior/models/Model.py:41: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /pytorch/torch/csrc/tensor/python_tensor.cpp:78.)
+  eps = torch.cuda.FloatTensor(std.size()).normal_()

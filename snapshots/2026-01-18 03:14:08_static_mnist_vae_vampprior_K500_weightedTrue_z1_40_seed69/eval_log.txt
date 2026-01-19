@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/root/workspace/vae_vampprior/utils/quick_eval.py", line 13, in <module>
+    from models.VAE import VAE
+  File "/root/workspace/vae_vampprior/models/VAE.py", line 7, in <module>
+    from scipy.special import logsumexp
+ModuleNotFoundError: No module named 'scipy'

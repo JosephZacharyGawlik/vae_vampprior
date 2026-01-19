@@ -3,7 +3,10 @@ from __future__ import print_function
 import torch
 from torch.autograd import Variable
 
-from utils.visual_evaluation import plot_images
+from utils.additional_metrics import compute_active_units
+from visual_evaluation import plot_images
+
+import matplotlib.pyplot as plt
 
 import numpy as np
 
@@ -47,6 +50,11 @@ def evaluate_vae(args, model, train_loader, data_loader, epoch, dir, mode):
                 plot_images(args, data.data.cpu().numpy()[0:9], dir + 'reconstruction/', 'real', size_x=3, size_y=3)
             x_mean = model.reconstruct_x(x)
             plot_images(args, x_mean.data.cpu().numpy()[0:9], dir + 'reconstruction/', str(epoch), size_x=3, size_y=3)
+
+    # calculate final loss
+    evaluate_loss /= len(data_loader)  # loss function already averages over batch size
+    evaluate_re /= len(data_loader)  # re already averages over batch size
+    evaluate_kl /= len(data_loader)  # kl already averages over batch size
 
     if mode == 'test':
         # load all data
@@ -100,9 +108,9 @@ def evaluate_vae(args, model, train_loader, data_loader, epoch, dir, mode):
         t_ll_e = time.time()
         print('Test lower-bound value {:.2f} in time: {:.2f}s'.format(elbo_test, t_ll_e - t_ll_s))
 
-        # CALCULATE log-likelihood
+        # CALCULATE lower-bound
         t_ll_s = time.time()
-        elbo_train = model.calculate_lower_bound(full_data, MB=args.MB)
+        elbo_train = 0. # model.calculate_lower_bound(full_data, MB=args.MB)
         t_ll_e = time.time()
         print('Train lower-bound value {:.2f} in time: {:.2f}s'.format(elbo_train, t_ll_e - t_ll_s))
 
@@ -118,10 +126,60 @@ def evaluate_vae(args, model, train_loader, data_loader, epoch, dir, mode):
         t_ll_e = time.time()
         print('Train log_likelihood value {:.2f} in time: {:.2f}s'.format(log_likelihood_train, t_ll_e - t_ll_s))
 
-    # calculate final loss
-    evaluate_loss /= len(data_loader)  # loss function already averages over batch size
-    evaluate_re /= len(data_loader)  # re already averages over batch size
-    evaluate_kl /= len(data_loader)  # kl already averages over batch size
+        # # # Compute Gaps & Active Units & Visualizations # # # # # ## # # # # # # # # # # ## # # # # # # # # # # ## # # # # # 
+        # 1. ELBO Gap (Suboptimality Gap)
+        # Difference between true log-likelihood and ELBO
+        elbo_gap = log_likelihood_test - elbo_test
+        # 2. Prior Gap
+        prior_gap = evaluate_kl
+
+        os.makedirs(dir, exist_ok=True)
+        log_file = os.path.join(dir, 'test_summary_metrics.csv')
+
+        # Extract architectural details safely
+        prior_type = args.prior
+        # Use getattr(object, 'attr', default) to handle models where these aren't defined
+        n_pseudo = getattr(args, 'number_components', 0) if prior_type == 'vampprior' else 0
+        is_weighted = getattr(args, 'weighted', False) if prior_type == 'vampprior' else False
+        flow_h = getattr(args, 'flow_hidden_dim', 0) if prior_type == 'flowprior' else 0
+        flow_l = getattr(args, 'flow_layers', 0) if prior_type == 'flowprior' else 0
+
+        # Calculate Active Units
+        active_units, _ = compute_active_units(model, data_loader, dir, 'cuda' if not args.no_cuda else 'cpu') 
+
+        with open(log_file, 'w') as f:
+            # Header: Added AU, RE, and BPD
+            f.write('Prior_Type,PseudoInputs,Weighted,Flow_H,Flow_L,LL_Test,ELBO_Test,RE_Test,ELBO_Gap,Prior_Gap,Active_Units,BPD\n')
+            
+            # Calculate BPD
+            bpd = -log_likelihood_test / (784 * np.log(2)) # For MNIST 28x28
+            
+            # Data Row
+            f.write(f"{prior_type},"
+                    f"{n_pseudo},"
+                    f"{is_weighted},"
+                    f"{flow_h},"
+                    f"{flow_l},"
+                    f"{log_likelihood_test:.4f},"
+                    f"{elbo_test:.4f},"
+                    f"{evaluate_re:.4f}," # Reconstruction error
+                    f"{elbo_gap:.4f},"
+                    f"{prior_gap:.4f},"
+                    f"{active_units}," 
+                    f"{bpd:.4f}\n")
+                
+        # --- 1. Gap Visualization ---
+        labels = ['ELBO Gap', 'Prior Gap']
+        values = [elbo_gap, prior_gap]
+
+        plt.figure(figsize=(6, 4))
+        plt.bar(labels, values, color=['#2e6dcc', '#e74c3c'])
+        plt.title(f'Gap Analysis: {prior_type}')
+        plt.ylabel('Magnitude')
+        plt.savefig(os.path.join(dir, 'gap_analysis.png'))
+        plt.close()
+        # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+
     if mode == 'test':
         return evaluate_loss, evaluate_re, evaluate_kl, log_likelihood_test, log_likelihood_train, elbo_test, elbo_train
     else:
