@@ -1,10 +1,8 @@
-# # run quick_eval.py for all model snapshots in a directory
-# for model_dir in snapshots/*; do
-#     echo "Evaluating model in directory: $model_dir"
-#     python utils/quick_eval.py --model_dir "$model_dir"
-# done
-
 #!/bin/bash
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
+# # # # # # # # # # # # # # # # WARNING! This script is super inefficient!
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # 
 
 # 1. Set parallel limit (adjust based on GPU memory and CPU data loading capacity)
 MAX_JOBS=2 
