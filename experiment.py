@@ -167,11 +167,11 @@ def run(args, kwargs):
 
     # --- START RUNTIME LOGGING ---
     import time
-    t_start = time.time()
+    t_start = time.perf_counter()
 
     experiment_vae(args, train_loader, val_loader, test_loader, model, optimizer, dir, model_name = args.model_name)
     
-    t_end = time.time()
+    t_end = time.perf_counter()
     duration = t_end - t_start
     # --- END RUNTIME LOGGING ---
 

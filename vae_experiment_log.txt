@@ -285,3 +285,20 @@ RE: 60.64
 KL: 29.66
 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
+Namespace(batch_size=10, test_batch_size=10, epochs=2, lr=0.001, early_stopping_epochs=1, warmup=1, no_cuda=True, seed=1, z1_size=2, z2_size=2, input_size=[1, 28, 28], activation=None, number_components=10, pseudoinputs_mean=0.05, pseudoinputs_std=0.01, use_training_data_init=False, model_name='vae', prior='standard', weighted=False, input_type='binary', flow_layers=8, flow_hidden_dim=128, S=10, MB=10, dataset_name='static_mnist', dynamic_binarization=False, cuda=False, model_signature='2026-01-19 20:58:50')
+Namespace(batch_size=10, test_batch_size=10, epochs=2, lr=0.001, early_stopping_epochs=1, warmup=1, no_cuda=True, seed=1, z1_size=2, z2_size=2, input_size=[1, 28, 28], activation=None, number_components=10, pseudoinputs_mean=0.05, pseudoinputs_std=0.01, use_training_data_init=False, model_name='vae', prior='standard', weighted=False, input_type='binary', flow_layers=8, flow_hidden_dim=128, S=10, MB=10, dataset_name='static_mnist', dynamic_binarization=False, cuda=False, model_signature='2026-01-19 21:01:17')
+Namespace(batch_size=100, test_batch_size=100, epochs=1, lr=0.0005, early_stopping_epochs=50, warmup=100, no_cuda=False, seed=17, z1_size=40, z2_size=40, input_size=[1, 28, 28], activation=None, number_components=500, pseudoinputs_mean=0.05, pseudoinputs_std=0.01, use_training_data_init=False, model_name='vae', prior='standard', weighted=False, input_type='binary', flow_layers=8, flow_hidden_dim=128, S=5000, MB=100, dataset_name='static_mnist', dynamic_binarization=False, cuda=True, model_signature='2026-01-19 21:06:52')
+FINAL EVALUATION ON TEST SET
+LogL (TEST): 221.07
+LogL (TRAIN): 0.00
+ELBO (TEST): 233.75
+ELBO (TRAIN): 0.00
+Loss: 233.86
+RE: 71.59
+KL: 162.27
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Namespace(batch_size=100, test_batch_size=100, epochs=2000, lr=0.0005, early_stopping_epochs=50, warmup=100, no_cuda=False, seed=14, z1_size=40, z2_size=40, input_size=[1, 28, 20], activation=None, number_components=500, pseudoinputs_mean=0.5, pseudoinputs_std=0.02, use_training_data_init=False, model_name='vae', prior='vampprior', weighted=False, input_type='gray', flow_layers=8, flow_hidden_dim=128, S=5000, MB=100, dataset_name='freyfaces', dynamic_binarization=False, cuda=True, model_signature='2026-01-19 21:39:37')
+Namespace(batch_size=100, test_batch_size=100, epochs=2000, lr=0.0005, early_stopping_epochs=50, warmup=100, no_cuda=False, seed=14, z1_size=40, z2_size=40, input_size=[1, 28, 20], activation=None, number_components=500, pseudoinputs_mean=0.5, pseudoinputs_std=0.02, use_training_data_init=False, model_name='vae', prior='vampprior', weighted=False, input_type='gray', flow_layers=8, flow_hidden_dim=128, S=5000, MB=100, dataset_name='freyfaces', dynamic_binarization=False, cuda=True, model_signature='2026-01-19 21:39:37')
+Namespace(batch_size=100, test_batch_size=100, epochs=2000, lr=0.0005, early_stopping_epochs=50, warmup=100, no_cuda=False, seed=14, z1_size=40, z2_size=40, input_size=[1, 28, 20], activation=None, number_components=500, pseudoinputs_mean=0.5, pseudoinputs_std=0.02, use_training_data_init=False, model_name='vae', prior='vampprior', weighted=False, input_type='gray', flow_layers=8, flow_hidden_dim=128, S=5000, MB=100, dataset_name='freyfaces', dynamic_binarization=False, cuda=True, model_signature='2026-01-19 21:49:30')
+Namespace(batch_size=100, test_batch_size=100, epochs=2000, lr=0.0005, early_stopping_epochs=50, warmup=100, no_cuda=False, seed=14, z1_size=40, z2_size=40, input_size=[1, 28, 20], activation=None, number_components=500, pseudoinputs_mean=0.5, pseudoinputs_std=0.02, use_training_data_init=False, model_name='vae', prior='vampprior', weighted=False, input_type='gray', flow_layers=8, flow_hidden_dim=128, S=5000, MB=100, dataset_name='freyfaces', dynamic_binarization=False, cuda=True, model_signature='2026-01-19 21:49:31')

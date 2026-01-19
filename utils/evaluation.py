@@ -4,7 +4,7 @@ import torch
 from torch.autograd import Variable
 
 from utils.additional_metrics import compute_active_units
-from visual_evaluation import plot_images
+from utils.visual_evaluation import plot_images
 
 import matplotlib.pyplot as plt
 
