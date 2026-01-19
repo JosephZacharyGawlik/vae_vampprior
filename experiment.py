@@ -164,7 +164,32 @@ def run(args, kwargs):
     # ======================================================================================================================
     print('perform experiment')
     from utils.perform_experiment import experiment_vae
+
+    # --- START RUNTIME LOGGING ---
+    import time
+    t_start = time.time()
+
     experiment_vae(args, train_loader, val_loader, test_loader, model, optimizer, dir, model_name = args.model_name)
+    
+    t_end = time.time()
+    duration = t_end - t_start
+    # --- END RUNTIME LOGGING ---
+
+    # Ensure eval_results exists inside the snapshot directory
+    eval_results_path = os.path.join(dir, 'eval_results')
+    if not os.path.exists(eval_results_path):
+        os.makedirs(eval_results_path)
+
+    # Save the runtime info specifically in the eval_results directory
+    runtime_file = os.path.join(eval_results_path, 'runtime.txt')
+    with open(runtime_file, 'w') as f:
+        f.write(f"Total training time (seconds): {duration:.2f}\n")
+        f.write(f"Total training time (minutes): {duration/60:.2f}\n")
+        f.write(f"Start: {datetime.datetime.fromtimestamp(t_start)}\n")
+        f.write(f"End: {datetime.datetime.fromtimestamp(t_end)}\n")
+
+    print(f"✅ Training finished in {duration/60:.2f} minutes. Log saved to: {runtime_file}")
+
     # ======================================================================================================================
     print('-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-')
     with open('vae_experiment_log.txt', 'a') as f:
