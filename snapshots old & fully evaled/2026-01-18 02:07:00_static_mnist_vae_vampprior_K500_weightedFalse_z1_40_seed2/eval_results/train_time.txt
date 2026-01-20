@@ -1,4 +1,0 @@
-Training Start: 2026-01-18 02:07:00
-Training End:   2026-01-19 07:20:43.873945
-Total Seconds:  105223.87
-Total Minutes:  1753.73

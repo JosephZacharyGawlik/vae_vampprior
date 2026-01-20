@@ -1,2 +1,0 @@
-Prior_Type,PseudoInputs,Weighted,Flow_H,Flow_L,LL_Test,ELBO_Test,RE_Test,ELBO_Gap,Prior_Gap,Active_Units,BPD
-vampprior,500,True,0,0,85.8487,91.3746,63.2808,-5.5260,28.0337,34,-0.1580
