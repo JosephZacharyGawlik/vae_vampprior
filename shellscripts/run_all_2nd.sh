@@ -2,7 +2,7 @@
 
 # Load global defaults
 set -a
-[ -f .env.experiments ] && source .env.experiments
+source .env.experiments
 set +a
 
 # Configuration Arrays
@@ -15,33 +15,30 @@ FLOW_H=(64 128 256)
 COMMANDS_FILE="experiment_queue.txt"
 > $COMMANDS_FILE
 
-echo "📝 Generating command queue..."
+echo "📝 Generating command queue using run_env_experiment.sh..."
 
-# 1. Generate VampPrior Commands (18 runs)
+# 1. VampPrior Commands
 for SEED in "${SEEDS[@]}"; do
     for K in "${K_VALUES[@]}"; do
         for W in "${WEIGHTED_OPTS[@]}"; do
-            # We pass variables as ENV vars at the start of the command string
-            echo "SEED=$SEED PRIOR=vampprior K=$K WEIGHTED=$W uv run experiment.py" >> $COMMANDS_FILE
+            echo "SEED=$SEED PRIOR=vampprior NUMBER_COMPONENTS=$K WEIGHTED=$W bash shellscripts/run_env_experiments.sh" >> $COMMANDS_FILE
         done
     done
 done
 
-# 2. Generate FlowPrior Commands (27 runs)
+# 2. FlowPrior Commands
 for SEED in "${SEEDS[@]}"; do
     for L in "${FLOW_L[@]}"; do
         for H in "${FLOW_H[@]}"; do
-            echo "SEED=$SEED PRIOR=flowprior L=$L H=$H uv run experiment.py" >> $COMMANDS_FILE
+            echo "SEED=$SEED PRIOR=flowprior FLOW_LAYERS=$L FLOW_HIDDEN_DIM=$H bash shellscripts/run_env_experiments.sh" >> $COMMANDS_FILE
         done
     done
 done
 
 TOTAL=$(wc -l < $COMMANDS_FILE)
-echo "🚀 Starting $TOTAL experiments (Parallelism: 2 jobs max)..."
+echo "🚀 Starting $TOTAL experiments on $DATASET_NAME (Parallelism: 2)..."
 
-# Run with xargs. 
-# sh -c is required so that the ENV=VALUE prefix is correctly interpreted by the shell.
 cat $COMMANDS_FILE | xargs -I {} -P 2 sh -c "echo 'Running: {}'; {}"
 
-echo "✅ All experiments completed. Running final visualizations..."
+echo "✅ All experiments completed."
 uv run utils/train_visualizations.py

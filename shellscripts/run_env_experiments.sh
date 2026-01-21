@@ -20,6 +20,8 @@ uv run experiment.py \
     --number_components "$NUMBER_COMPONENTS" \
     --pseudoinputs_mean "$PSEUDOINPUTS_MEAN" \
     --pseudoinputs_std "$PSEUDOINPUTS_STD" \
+    --flow_layers "$FLOW_LAYERS" \
+    --flow_hidden_dim "$FLOW_HIDDEN_DIM" \
     --S "$S_SAMPLES" \
     --MB "$MB_SIZE" \
     $( [ "$WEIGHTED" == "True" ] && echo "--weighted" ) \
