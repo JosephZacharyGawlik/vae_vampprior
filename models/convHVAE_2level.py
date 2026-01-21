@@ -4,7 +4,7 @@ import numpy as np
 
 import math
 
-from scipy.misc import logsumexp
+from scipy.special import logsumexp
 
 
 import torch
@@ -17,7 +17,7 @@ from utils.visual_evaluation import plot_histogram
 from utils.nn import he_init, GatedDense, NonLinear, \
     Conv2d, GatedConv2d, GatedResUnit, ResizeGatedConv2d, MaskedConv2d, ResUnitBN, ResizeConv2d, GatedResUnit, GatedConvTranspose2d
 
-from Model import Model
+from .Model import Model
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 #=======================================================================================================================

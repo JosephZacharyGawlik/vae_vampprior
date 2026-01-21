@@ -68,7 +68,7 @@ parser.add_argument('--model_name', type=str, default='vae', metavar='MN',
                     help='model name: vae, hvae_2level, convhvae_2level, pixelhvae_2level')
 
 parser.add_argument('--prior', type=str, default='vampprior', metavar='P',
-                    help='prior: standard, vampprior, flowprior')
+                    help='prior: standard, vampprior, flowprior, vampflowprior')
 
 parser.add_argument('--weighted', action='store_true', default=False,
                     help='whether to use weighted mixture for VampPrior')
@@ -118,6 +118,8 @@ def run(args, kwargs):
         config_info = f"_K{args.number_components}_weighted{args.weighted}"
     elif args.prior == 'flowprior':
         config_info = f"_L{args.flow_layers}_H{args.flow_hidden_dim}"
+    elif args.prior == 'vampflowprior':
+        config_info = f"_K{args.number_components}_weighted{args.weighted}_L{args.flow_layers}_H{args.flow_hidden_dim}"
     else:
         config_info = ""
 

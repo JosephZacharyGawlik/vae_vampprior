@@ -20,6 +20,7 @@ from utils.nn import he_init, GatedDense, NonLinear
 from models.Model import Model
 
 from models.FlowPrior import FlowPrior
+from models.VampFlowPrior import VampFlowPrior
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 #=======================================================================================================================
@@ -63,6 +64,19 @@ class VAE(Model):
         # add normalizing flow if FlowPrior
         if self.args.prior == 'flowprior':
             self.flow = FlowPrior(dim=self.args.z1_size, hidden_dim=self.args.flow_hidden_dim, n_layers=self.args.flow_layers)
+
+        if self.args.prior == 'vampflowprior':
+            # initialize pseudo-inputs
+            pseudo_inputs = torch.randn(self.args.number_components, np.prod(self.args.input_size)) * 0.01
+            if self.args.cuda:
+                pseudo_inputs = pseudo_inputs.cuda()
+            self.prior = VampFlowPrior(encoder=self.q_z,  # encoder returns mean/logvar
+                                    pseudo_inputs=pseudo_inputs,
+                                    latent_dim=self.args.z1_size,
+                                    flow_layers=self.args.flow_layers,
+                                    flow_hidden_dim=self.args.flow_hidden_dim,
+                                    cuda=self.args.cuda,
+                                    weighted=self.args.weighted)
 
     # AUXILIARY METHODS
     def calculate_loss(self, x, beta=1., average=False):
@@ -196,6 +210,26 @@ class VAE(Model):
             # This 'warps' the Gaussian sphere into the learned prior shape
             z_sample_rand, _ = self.flow.forward(z0)
 
+        elif self.args.prior == 'vampflowprior':
+            # Sample from mixture
+            C = self.args.number_components
+            if self.args.weighted:
+                weights = torch.softmax(self.prior.logits, dim=0)
+                idx = torch.multinomial(weights, N, replacement=True)
+            else:
+                idx = torch.randint(0, C, (N,), device=z0.device)
+            
+            # For each sample, pick the flow and pseudo-input
+            z_samples = []
+            for i in idx:
+                pseudo_input = self.prior.pseudo_inputs[i:i+1]
+                q_mean, q_logvar = self.q_z(pseudo_input)
+                eps = torch.randn(1, self.args.z1_size, device=z0.device)
+                z_sample, _ = self.prior.flows[i].forward(eps * torch.exp(0.5*q_logvar) + q_mean)
+                z_samples.append(z_sample)
+            z_sample_rand = torch.cat(z_samples, dim=0)
+
+
         samples_rand, _ = self.p_x(z_sample_rand)
         return samples_rand
 
@@ -268,6 +302,9 @@ class VAE(Model):
 
             # 3. Combine to get the log-density of the original z
             log_prior = log_p_z0 + log_det_jacobian
+
+        elif self.args.prior == 'vampflowprior':
+            log_prior = self.prior.log_prob(z)
 
         else:
             raise Exception('Wrong name of the prior!')

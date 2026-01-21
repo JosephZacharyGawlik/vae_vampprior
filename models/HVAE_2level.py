@@ -4,7 +4,7 @@ import numpy as np
 
 import math
 
-from scipy.misc import logsumexp
+from scipy.special import logsumexp
 
 import torch
 import torch.utils.data
@@ -16,7 +16,7 @@ from utils.distributions import log_Bernoulli, log_Normal_diag, log_Normal_stand
 from utils.visual_evaluation import plot_histogram
 from utils.nn import he_init, GatedDense, NonLinear
 
-from Model import Model
+from .Model import Model
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 #=======================================================================================================================
