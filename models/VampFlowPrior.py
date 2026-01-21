@@ -34,31 +34,39 @@ class VampFlowPrior(nn.Module):
         """
         MB = z.size(0)
         device = z.device
-        log_probs = []
 
         if self.weighted:
             weights = torch.softmax(self.logits, dim=0)
         else:
             weights = torch.ones(self.n_components, device=device) / self.n_components
 
-        # iterate over pseudo-inputs
-        for i in range(self.n_components):
-            # 1. Encoder output for pseudo-input
-            pseudo_input = self.pseudo_inputs[i:i+1]  # 1 x input_dim
-            q_mean, q_logvar = self.encoder(pseudo_input)  # 1 x latent_dim
+        # 1. Vectorized Encoder: Get all component params at once [C, latent_dim]
+        q_mean, q_logvar = self.encoder(self.pseudo_inputs)
 
-            # 2. Inverse flow: z -> epsilon
-            eps, logdet = self.flows[i].inverse(z)  # MB x latent_dim, MB
+        # 2. Compute all flows and stack: eps [C, MB, latent_dim], logdet [C, MB]
+        results = [self.flows[i].inverse(z) for i in range(self.n_components)]
+        eps_all = torch.stack([r[0] for r in results])
+        logdet_all = torch.stack([r[1] for r in results])
 
-            # 3. Base Gaussian log prob
-            log_base = -0.5 * ((eps - q_mean) ** 2 / torch.exp(q_logvar) + q_logvar + math.log(2*math.pi)).sum(-1)  # MB
+        # 3. Vectorized Base Log Prob with broadcasting
+        # Reshape for [C, 1, latent_dim] vs [C, MB, latent_dim]
+        q_mean = q_mean.unsqueeze(1)
+        q_logvar = q_logvar.unsqueeze(1)
+        
+        diff = (eps_all - q_mean) ** 2
+        var = torch.exp(q_logvar)
+        log_base = -0.5 * (diff / var + q_logvar + math.log(2 * math.pi)).sum(-1)
 
-            # 4. Add log-det Jacobian
-            log_probs.append(log_base + logdet + math.log(weights[i]))
+        # 4. Combine with log_weights
+        if self.weighted:
+            # self.logits is a Parameter
+            log_weights = torch.log_softmax(self.logits, dim=0)
+        else:
+            # self.logits is None, so we create a uniform log-weight tensor on the fly
+            log_weights = torch.full((self.n_components,), -math.log(self.n_components), device=device)
+        
+        # Now this will always work
+        log_probs = log_base + logdet_all + log_weights.view(-1, 1)
 
-        # 5. LogSumExp across mixture components
-        log_probs = torch.stack(log_probs, dim=0)  # C x MB
-        max_log, _ = torch.max(log_probs, dim=0)
-        log_prob = max_log + torch.log(torch.sum(torch.exp(log_probs - max_log), dim=0))  # MB
-
-        return log_prob
+        # 5. LogSumExp across mixture components (dim 0 is the C components)
+        return torch.logsumexp(log_probs, dim=0)

@@ -217,14 +217,14 @@ class VAE(Model):
                 weights = torch.softmax(self.prior.logits, dim=0)
                 idx = torch.multinomial(weights, N, replacement=True)
             else:
-                idx = torch.randint(0, C, (N,), device=z0.device)
+                idx = torch.randint(0, C, (N,), device=next(self.parameters()).device)
             
             # For each sample, pick the flow and pseudo-input
             z_samples = []
             for i in idx:
                 pseudo_input = self.prior.pseudo_inputs[i:i+1]
                 q_mean, q_logvar = self.q_z(pseudo_input)
-                eps = torch.randn(1, self.args.z1_size, device=z0.device)
+                eps = torch.randn(1, self.args.z1_size, device=next(self.parameters()).device)
                 z_sample, _ = self.prior.flows[i].forward(eps * torch.exp(0.5*q_logvar) + q_mean)
                 z_samples.append(z_sample)
             z_sample_rand = torch.cat(z_samples, dim=0)

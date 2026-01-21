@@ -20,7 +20,15 @@ def compute_active_units(model, data_loader, out_dir, device, threshold=0.01):
         for x, _ in data_loader:
             x = x.to(device)
             # TODO: what does my model output?
-            mu, _ = model.q_z(x) 
+            # For HVAE, we look at the top-level latent encoder (z2)
+            if hasattr(model, 'q_z'):
+                mu, _ = model.q_z(x)
+            # Fallback for standard VAE
+            elif hasattr(model, 'q_z2'):
+                mu, _ = model.q_z2(x)
+            else:
+                # If it's a different naming convention
+                continue
             all_means.append(mu)
             
     # Stack all means: [Total_Samples, Latent_Dim]
