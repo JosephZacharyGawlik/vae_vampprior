@@ -18,6 +18,7 @@ from utils.nn import he_init, GatedDense, NonLinear, \
     Conv2d, GatedConv2d, GatedResUnit, ResizeGatedConv2d, MaskedConv2d, ResUnitBN, ResizeConv2d, GatedResUnit, GatedConvTranspose2d
 
 from .Model import Model
+from models.FlowPrior import FlowPrior
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 #=======================================================================================================================
@@ -109,6 +110,14 @@ class VAE(Model):
         # add pseudo-inputs if VampPrior
         if self.args.prior == 'vampprior':
             self.add_pseudoinputs()
+
+        if self.args.prior == 'vampprior' and self.args.weighted:
+            self.w = nn.Parameter(torch.ones(self.args.number_components, 1))
+
+        if self.args.prior == 'flowprior':
+            self.flow = FlowPrior(dim=self.args.z2_size, 
+                                hidden_dim=self.args.flow_hidden_dim, 
+                                n_layers=self.args.flow_layers)
 
     # AUXILIARY METHODS
     def calculate_loss(self, x, beta=1., average=False):
@@ -212,6 +221,13 @@ class VAE(Model):
             z2_sample_gen_mean, z2_sample_gen_logvar = self.q_z2(means)
             z2_sample_rand = self.reparameterize(z2_sample_gen_mean, z2_sample_gen_logvar)
 
+        elif self.args.prior == 'flowprior':
+            z0 = Variable(torch.FloatTensor(N, self.args.z2_size).normal_())
+            if self.args.cuda:
+                z0 = z0.cuda()
+            # Map simple to complex
+            z2_sample_rand, _ = self.flow.forward(z0)
+
         # Sampling z1 from a model
         z1_sample_mean, z1_sample_logvar = self.p_z1(z2_sample_rand)
         z1_sample_rand = self.reparameterize(z1_sample_mean, z1_sample_logvar)
@@ -302,11 +318,24 @@ class VAE(Model):
             means = z2_p_mean.unsqueeze(0)
             logvars = z2_p_logvar.unsqueeze(0)
 
-            a = log_Normal_diag(z_expand, means, logvars, dim=2) - math.log(C)  # MB x C
+            a = log_Normal_diag(z_expand, means, logvars, dim=2)  # MB x C
+            if self.args.weighted:
+                log_weights = torch.nn.functional.log_softmax(self.w, dim=0) # C x 1
+                a = a + log_weights.view(1, -1) # Add log(w) to log(p)
+            else:
+                a = a - math.log(C) # Standard uniform: log(1/C)
             a_max, _ = torch.max(a, 1)  # MB
             # calculte log-sum-exp
             log_prior = (a_max + torch.log(torch.sum(torch.exp(a - a_max.unsqueeze(1)), 1)))  # MB
 
+        elif self.args.prior == 'flowprior':
+            # 1. Map complex z2 back to simple noise z0 (Inverse pass)
+            z0, log_det_jacobian = self.flow.inverse(z2)
+            # 2. Log-likelihood under standard normal
+            log_p_z0 = log_Normal_standard(z0, dim=1)
+            # 3. Sum with Jacobian for change of variables
+            log_prior = log_p_z0 + log_det_jacobian
+            
         else:
             raise Exception('Wrong name of the prior!')
 

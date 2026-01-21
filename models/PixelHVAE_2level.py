@@ -18,6 +18,7 @@ from utils.nn import he_init, GatedDense, NonLinear, \
     Conv2d, GatedConv2d, MaskedConv2d, ResUnitBN, MaskedGatedConv2d
 
 from .Model import Model
+from models.FlowPrior import FlowPrior
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 #=======================================================================================================================
@@ -106,6 +107,14 @@ class VAE(Model):
         # add pseudo-inputs if VampPrior
         if self.args.prior == 'vampprior':
             self.add_pseudoinputs()
+
+        if self.args.prior == 'vampprior' and self.args.weighted:
+            self.w = nn.Parameter(torch.ones(self.args.number_components, 1))
+
+        if self.args.prior == 'flowprior':
+            self.flow = FlowPrior(dim=self.args.z2_size, 
+                                hidden_dim=self.args.flow_hidden_dim, 
+                                n_layers=self.args.flow_layers)
 
     # AUXILIARY METHODS
     def calculate_loss(self, x, beta=1., average=False):
@@ -232,22 +241,32 @@ class VAE(Model):
         return samples_gen
 
     def generate_x(self, N=25):
-        # Sampling z2 from a prior
+        # 1. Sampling z2 from the chosen prior
         if self.args.prior == 'standard':
-            z2_sample_rand = Variable( torch.FloatTensor(N, self.args.z1_size).normal_() )
+            # FIX: Use z2_size, not z1_size
+            z2_sample_rand = Variable(torch.FloatTensor(N, self.args.z2_size).normal_())
             if self.args.cuda:
                 z2_sample_rand = z2_sample_rand.cuda()
 
         elif self.args.prior == 'vampprior':
-            means = self.means(self.idle_input)[0:N].view(-1, self.args.input_size[0], self.args.input_size[1],self.args.input_size[2])
+            # Sampling from the pseudo-inputs
+            means = self.means(self.idle_input)[0:N].view(-1, self.args.input_size[0], self.args.input_size[1], self.args.input_size[2])
             z2_sample_gen_mean, z2_sample_gen_logvar = self.q_z2(means)
             z2_sample_rand = self.reparameterize(z2_sample_gen_mean, z2_sample_gen_logvar)
 
-        # Sampling z1 from a model
+        elif self.args.prior == 'flowprior':
+            # Sampling from base distribution and transforming through the flow
+            z0 = Variable(torch.FloatTensor(N, self.args.z2_size).normal_())
+            if self.args.cuda:
+                z0 = z0.cuda()
+            z2_sample_rand, _ = self.flow.forward(z0)
+
+        # 2. Sampling z1 conditioned on z2: p(z1 | z2)
         z1_sample_mean, z1_sample_logvar = self.p_z1(z2_sample_rand)
         z1_sample_rand = self.reparameterize(z1_sample_mean, z1_sample_logvar)
 
-        # Sampling from PixelCNN
+        # 3. Sampling pixels from PixelCNN: p(x | z1, z2)
+        # Note: This is the slow part!
         samples_gen = self.pixelcnn_generate(z1_sample_rand, z2_sample_rand)
 
         return samples_gen
@@ -328,24 +347,29 @@ class VAE(Model):
             log_prior = log_Normal_standard(z2, dim=1)
 
         elif self.args.prior == 'vampprior':
-            # z - MB x M
             C = self.args.number_components
-
-            # calculate params
             X = self.means(self.idle_input).view(-1, self.args.input_size[0], self.args.input_size[1], self.args.input_size[2])
+            z2_p_mean, z2_p_logvar = self.q_z2(X)
 
-            # calculate params for given data
-            z2_p_mean, z2_p_logvar = self.q_z2(X)  # C x M)
-
-            # expand z
             z_expand = z2.unsqueeze(1)
             means = z2_p_mean.unsqueeze(0)
             logvars = z2_p_logvar.unsqueeze(0)
 
-            a = log_Normal_diag(z_expand, means, logvars, dim=2) - math.log(C)  # MB x C
-            a_max, _ = torch.max(a, 1)  # MB
-            # calculte log-sum-exp
-            log_prior = (a_max + torch.log(torch.sum(torch.exp(a - a_max.unsqueeze(1)), 1)))  # MB
+            a = log_Normal_diag(z_expand, means, logvars, dim=2)
+            
+            if self.args.weighted:
+                log_weights = torch.nn.functional.log_softmax(self.w, dim=0)
+                a = a + log_weights.view(1, -1)
+            else:
+                a = a - math.log(C)
+
+            a_max, _ = torch.max(a, 1)
+            log_prior = a_max + torch.log(torch.sum(torch.exp(a - a_max.unsqueeze(1)), 1))
+
+        elif self.args.prior == 'flowprior':
+            z0, log_det_jacobian = self.flow.inverse(z2)
+            log_p_z0 = log_Normal_standard(z0, dim=1)
+            log_prior = log_p_z0 + log_det_jacobian
 
         else:
             raise Exception('Wrong name of the prior!')

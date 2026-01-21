@@ -1,0 +1,4 @@
+SEED=14 MODEL_NAME=pixelhvae_2level PRIOR=standard S_SAMPLES=500 bash shellscripts/run_env_experiments.sh
+SEED=14 MODEL_NAME=pixelhvae_2level PRIOR=vampprior WEIGHTED=False S_SAMPLES=500 bash shellscripts/run_env_experiments.sh
+SEED=14 MODEL_NAME=pixelhvae_2level PRIOR=vampprior WEIGHTED=True S_SAMPLES=500 bash shellscripts/run_env_experiments.sh
+SEED=14 MODEL_NAME=pixelhvae_2level PRIOR=flowprior S_SAMPLES=500 bash shellscripts/run_env_experiments.sh
