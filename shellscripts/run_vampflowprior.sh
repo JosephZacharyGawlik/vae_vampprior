@@ -1,29 +1,39 @@
 #!/bin/bash
 
-# 1. Kill any hung processes to ensure the A40 is ready
-pkill -9 python
+# Load global defaults
+set -a
+source .env.experiments
+set +a
 
-# 2. Set your specific parameters
+# Ensure log directory exists so the run doesn't crash
+mkdir -p logs
+
+echo "📝 Starting experiment: Standard VAE + VampFlowPrior..."
+
+# ----------------------------
+# Configuration for VampFlowPrior
+# ----------------------------
 SEED=14
-DATASET_NAME="freyfaces" 
+DATASET_NAME="static_mnist"
 MODEL_NAME="vae"
 PRIOR="vampflowprior"
-VAMPFLOW_K=50 
-FLOW_H=64
-FLOW_D=2
 WEIGHTED="True"
 
-echo "🚀 Launching Single VampFlowPrior Experiment..."
-echo "Model: $MODEL_NAME | Prior: $PRIOR | Flows: $FLOW_D layers ($FLOW_H dim)"
-
-# 3. Execute directly (No loops, no xargs)
-# We export the variables so the sub-shell/python can see them
-export SEED DATASET_NAME MODEL_NAME PRIOR
-export NUMBER_COMPONENTS=$VAMPFLOW_K
-export FLOW_HIDDEN_DIM=$FLOW_H
-export FLOW_LAYERS=$FLOW_D
-export WEIGHTED
-
+# ----------------------------
+# Run the experiment
+# ----------------------------
+# We execute this directly rather than using xargs since it's just one job
+SEED=$SEED \
+DATASET_NAME=$DATASET_NAME \
+MODEL_NAME=$MODEL_NAME \
+PRIOR=$PRIOR \
+WEIGHTED=$WEIGHTED \
 bash shellscripts/run_env_experiments.sh
 
+# ----------------------------
+# Run visualizations after the experiment
+# ----------------------------
+echo "📝 Experiment finished. Running visualizations..."
 uv run utils/train_visualizations.py
+
+echo "✅ VampFlowPrior experiment and visualizations completed."

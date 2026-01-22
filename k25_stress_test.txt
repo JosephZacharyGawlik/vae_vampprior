@@ -1,0 +1,6 @@
+SEED=14 WEIGHTED=True NUMBER_COMPONENTS=25 PRIOR=vampprior bash shellscripts/run_env_experiments.sh
+SEED=14 WEIGHTED=False NUMBER_COMPONENTS=25 PRIOR=vampprior bash shellscripts/run_env_experiments.sh
+SEED=69 WEIGHTED=True NUMBER_COMPONENTS=25 PRIOR=vampprior bash shellscripts/run_env_experiments.sh
+SEED=69 WEIGHTED=False NUMBER_COMPONENTS=25 PRIOR=vampprior bash shellscripts/run_env_experiments.sh
+SEED=420 WEIGHTED=True NUMBER_COMPONENTS=25 PRIOR=vampprior bash shellscripts/run_env_experiments.sh
+SEED=420 WEIGHTED=False NUMBER_COMPONENTS=25 PRIOR=vampprior bash shellscripts/run_env_experiments.sh
