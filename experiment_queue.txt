@@ -1,3 +1,27 @@
-SEED=14 PRIOR=standard bash shellscripts/run_env_experiments.sh
-SEED=69 PRIOR=standard bash shellscripts/run_env_experiments.sh
-SEED=420 PRIOR=standard bash shellscripts/run_env_experiments.sh
+SEED=14 PRIOR=flowprior FLOW_LAYERS=2 FLOW_HIDDEN_DIM=64 bash shellscripts/run_env_experiments.sh
+SEED=14 PRIOR=flowprior FLOW_LAYERS=2 FLOW_HIDDEN_DIM=128 bash shellscripts/run_env_experiments.sh
+SEED=14 PRIOR=flowprior FLOW_LAYERS=2 FLOW_HIDDEN_DIM=256 bash shellscripts/run_env_experiments.sh
+SEED=14 PRIOR=flowprior FLOW_LAYERS=8 FLOW_HIDDEN_DIM=64 bash shellscripts/run_env_experiments.sh
+SEED=14 PRIOR=flowprior FLOW_LAYERS=8 FLOW_HIDDEN_DIM=128 bash shellscripts/run_env_experiments.sh
+SEED=14 PRIOR=flowprior FLOW_LAYERS=8 FLOW_HIDDEN_DIM=256 bash shellscripts/run_env_experiments.sh
+SEED=14 PRIOR=flowprior FLOW_LAYERS=16 FLOW_HIDDEN_DIM=64 bash shellscripts/run_env_experiments.sh
+SEED=14 PRIOR=flowprior FLOW_LAYERS=16 FLOW_HIDDEN_DIM=128 bash shellscripts/run_env_experiments.sh
+SEED=14 PRIOR=flowprior FLOW_LAYERS=16 FLOW_HIDDEN_DIM=256 bash shellscripts/run_env_experiments.sh
+SEED=69 PRIOR=flowprior FLOW_LAYERS=2 FLOW_HIDDEN_DIM=64 bash shellscripts/run_env_experiments.sh
+SEED=69 PRIOR=flowprior FLOW_LAYERS=2 FLOW_HIDDEN_DIM=128 bash shellscripts/run_env_experiments.sh
+SEED=69 PRIOR=flowprior FLOW_LAYERS=2 FLOW_HIDDEN_DIM=256 bash shellscripts/run_env_experiments.sh
+SEED=69 PRIOR=flowprior FLOW_LAYERS=8 FLOW_HIDDEN_DIM=64 bash shellscripts/run_env_experiments.sh
+SEED=69 PRIOR=flowprior FLOW_LAYERS=8 FLOW_HIDDEN_DIM=128 bash shellscripts/run_env_experiments.sh
+SEED=69 PRIOR=flowprior FLOW_LAYERS=8 FLOW_HIDDEN_DIM=256 bash shellscripts/run_env_experiments.sh
+SEED=69 PRIOR=flowprior FLOW_LAYERS=16 FLOW_HIDDEN_DIM=64 bash shellscripts/run_env_experiments.sh
+SEED=69 PRIOR=flowprior FLOW_LAYERS=16 FLOW_HIDDEN_DIM=128 bash shellscripts/run_env_experiments.sh
+SEED=69 PRIOR=flowprior FLOW_LAYERS=16 FLOW_HIDDEN_DIM=256 bash shellscripts/run_env_experiments.sh
+SEED=420 PRIOR=flowprior FLOW_LAYERS=2 FLOW_HIDDEN_DIM=64 bash shellscripts/run_env_experiments.sh
+SEED=420 PRIOR=flowprior FLOW_LAYERS=2 FLOW_HIDDEN_DIM=128 bash shellscripts/run_env_experiments.sh
+SEED=420 PRIOR=flowprior FLOW_LAYERS=2 FLOW_HIDDEN_DIM=256 bash shellscripts/run_env_experiments.sh
+SEED=420 PRIOR=flowprior FLOW_LAYERS=8 FLOW_HIDDEN_DIM=64 bash shellscripts/run_env_experiments.sh
+SEED=420 PRIOR=flowprior FLOW_LAYERS=8 FLOW_HIDDEN_DIM=128 bash shellscripts/run_env_experiments.sh
+SEED=420 PRIOR=flowprior FLOW_LAYERS=8 FLOW_HIDDEN_DIM=256 bash shellscripts/run_env_experiments.sh
+SEED=420 PRIOR=flowprior FLOW_LAYERS=16 FLOW_HIDDEN_DIM=64 bash shellscripts/run_env_experiments.sh
+SEED=420 PRIOR=flowprior FLOW_LAYERS=16 FLOW_HIDDEN_DIM=128 bash shellscripts/run_env_experiments.sh
+SEED=420 PRIOR=flowprior FLOW_LAYERS=16 FLOW_HIDDEN_DIM=256 bash shellscripts/run_env_experiments.sh
