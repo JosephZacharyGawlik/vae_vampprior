@@ -1,0 +1,8 @@
+SEED=69 MODEL_NAME=hvae_2level PRIOR=standard bash shellscripts/run_env_experiments.sh
+SEED=69 MODEL_NAME=hvae_2level PRIOR=vampprior WEIGHTED=False bash shellscripts/run_env_experiments.sh
+SEED=69 MODEL_NAME=hvae_2level PRIOR=vampprior WEIGHTED=True bash shellscripts/run_env_experiments.sh
+SEED=69 MODEL_NAME=hvae_2level PRIOR=flowprior bash shellscripts/run_env_experiments.sh
+SEED=420 MODEL_NAME=hvae_2level PRIOR=standard bash shellscripts/run_env_experiments.sh
+SEED=420 MODEL_NAME=hvae_2level PRIOR=vampprior WEIGHTED=False bash shellscripts/run_env_experiments.sh
+SEED=420 MODEL_NAME=hvae_2level PRIOR=vampprior WEIGHTED=True bash shellscripts/run_env_experiments.sh
+SEED=420 MODEL_NAME=hvae_2level PRIOR=flowprior bash shellscripts/run_env_experiments.sh

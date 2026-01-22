@@ -1,0 +1,2 @@
+Prior_Type,PseudoInputs,Weighted,Flow_H,Flow_L,LL_Test,ELBO_Test,RE_Test,ELBO_Gap,Prior_Gap,Active_Units,BPD
+flowprior,0,False,128,8,84.4776,90.6385,59.3508,-6.1608,31.3603,40,-0.1555

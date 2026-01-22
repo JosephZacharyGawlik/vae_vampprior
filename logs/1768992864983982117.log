@@ -1,0 +1,159 @@
+load data
+create model
+Namespace(batch_size=100, test_batch_size=100, epochs=2000, lr=0.0005, early_stopping_epochs=50, warmup=100, no_cuda=False, seed=14, z1_size=40, z2_size=40, input_size=[1, 28, 28], activation=None, number_components=500, pseudoinputs_mean=0.05, pseudoinputs_std=0.01, use_training_data_init=False, model_name='hvae_2level', prior='vampprior', weighted=False, input_type='binary', flow_layers=8, flow_hidden_dim=128, S=5000, MB=100, dataset_name='static_mnist', dynamic_binarization=False, cuda=True, model_signature='2026-01-21 10:54:27')
+perform experiment
+beta: 0.01
+/root/vae_vampprior/models/Model.py:41: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /pytorch/torch/csrc/tensor/python_tensor.cpp:78.)
+  eps = torch.cuda.FloatTensor(std.size()).normal_()
+/root/vae_vampprior/utils/optimizer.py:75: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha = 1) (Triggered internally at /pytorch/torch/csrc/utils/python_arg_parser.cpp:1805.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+Epoch: 1/2000, Time elapsed: 24.04s
+* Train loss: 108.18   (RE: 106.37, KL: 181.22)
+o Val.  loss: 248.79   (RE: 59.63, KL: 189.16)
+--> Early stopping: 0/50 (BEST: 100000.00)
+
+->model saved<-
+beta: 0.02
+Epoch: 2/2000, Time elapsed: 23.93s
+* Train loss: 54.97   (RE: 51.20, KL: 188.65)
+o Val.  loss: 235.92   (RE: 46.27, KL: 189.64)
+--> Early stopping: 0/50 (BEST: 248.79)
+
+->model saved<-
+beta: 0.03
+Epoch: 3/2000, Time elapsed: 24.02s
+* Train loss: 48.03   (RE: 42.66, KL: 178.85)
+o Val.  loss: 213.66   (RE: 41.55, KL: 172.11)
+--> Early stopping: 0/50 (BEST: 235.92)
+
+->model saved<-
+beta: 0.04
+Epoch: 4/2000, Time elapsed: 24.52s
+* Train loss: 45.89   (RE: 39.31, KL: 164.61)
+o Val.  loss: 202.85   (RE: 39.63, KL: 163.22)
+--> Early stopping: 0/50 (BEST: 213.66)
+
+->model saved<-
+beta: 0.05
+Epoch: 5/2000, Time elapsed: 24.12s
+* Train loss: 45.18   (RE: 37.63, KL: 151.05)
+o Val.  loss: 183.84   (RE: 38.54, KL: 145.30)
+--> Early stopping: 0/50 (BEST: 202.85)
+
+->model saved<-
+beta: 0.06
+Epoch: 6/2000, Time elapsed: 23.83s
+* Train loss: 44.89   (RE: 36.56, KL: 138.75)
+o Val.  loss: 176.13   (RE: 37.82, KL: 138.30)
+--> Early stopping: 0/50 (BEST: 183.84)
+
+->model saved<-
+beta: 0.07
+Epoch: 7/2000, Time elapsed: 25.59s
+* Train loss: 44.93   (RE: 35.64, KL: 132.72)
+o Val.  loss: 170.75   (RE: 37.36, KL: 133.39)
+--> Early stopping: 0/50 (BEST: 176.13)
+
+->model saved<-
+beta: 0.08
+Epoch: 8/2000, Time elapsed: 23.90s
+* Train loss: 45.21   (RE: 34.98, KL: 127.81)
+o Val.  loss: 165.70   (RE: 37.02, KL: 128.69)
+--> Early stopping: 0/50 (BEST: 170.75)
+
+->model saved<-
+beta: 0.09
+Epoch: 9/2000, Time elapsed: 23.72s
+* Train loss: 45.62   (RE: 34.50, KL: 123.48)
+o Val.  loss: 161.93   (RE: 36.81, KL: 125.12)
+--> Early stopping: 0/50 (BEST: 165.70)
+
+->model saved<-
+beta: 0.1
+Epoch: 10/2000, Time elapsed: 24.32s
+* Train loss: 46.15   (RE: 34.17, KL: 119.74)
+o Val.  loss: 156.14   (RE: 36.95, KL: 119.18)
+--> Early stopping: 0/50 (BEST: 161.93)
+
+->model saved<-
+beta: 0.11
+Epoch: 11/2000, Time elapsed: 24.88s
+* Train loss: 46.69   (RE: 33.90, KL: 116.27)
+o Val.  loss: 152.11   (RE: 36.78, KL: 115.33)
+--> Early stopping: 0/50 (BEST: 156.14)
+
+->model saved<-
+beta: 0.12
+Epoch: 12/2000, Time elapsed: 23.73s
+* Train loss: 47.29   (RE: 33.71, KL: 113.10)
+o Val.  loss: 150.11   (RE: 36.77, KL: 113.34)
+--> Early stopping: 0/50 (BEST: 152.11)
+
+->model saved<-
+beta: 0.13
+Epoch: 13/2000, Time elapsed: 22.36s
+* Train loss: 47.92   (RE: 33.60, KL: 110.16)
+o Val.  loss: 147.34   (RE: 36.69, KL: 110.65)
+--> Early stopping: 0/50 (BEST: 150.11)
+
+->model saved<-
+beta: 0.14
+Epoch: 14/2000, Time elapsed: 23.94s
+* Train loss: 48.57   (RE: 33.52, KL: 107.50)
+o Val.  loss: 143.98   (RE: 37.15, KL: 106.83)
+--> Early stopping: 0/50 (BEST: 147.34)
+
+->model saved<-
+beta: 0.15
+Epoch: 15/2000, Time elapsed: 23.86s
+* Train loss: 49.27   (RE: 33.53, KL: 104.99)
+o Val.  loss: 142.29   (RE: 36.94, KL: 105.35)
+--> Early stopping: 0/50 (BEST: 143.98)
+
+->model saved<-
+beta: 0.16
+Traceback (most recent call last):
+  File "/root/vae_vampprior/experiment.py", line 206, in <module>
+    run(args, kwargs)
+  File "/root/vae_vampprior/experiment.py", line 174, in run
+    experiment_vae(args, train_loader, val_loader, test_loader, model, optimizer, dir, model_name = args.model_name)
+  File "/root/vae_vampprior/utils/perform_experiment.py", line 33, in experiment_vae
+    model, train_loss_epoch, train_re_epoch, train_kl_epoch = train(epoch, args, train_loader, model,
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/vae_vampprior/utils/training.py", line 40, in train_vae
+    loss, RE, KL = model.calculate_loss(x, beta, average=True)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/vae_vampprior/models/HVAE_2level.py", line 119, in calculate_loss
+    log_p_z2 = self.log_p_z2(z2_q)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/root/vae_vampprior/models/HVAE_2level.py", line 276, in log_p_z2
+    z2_p_mean, z2_p_logvar = self.q_z2(X)
+                             ^^^^^^^^^^^^
+  File "/root/vae_vampprior/models/HVAE_2level.py", line 227, in q_z2
+    z2_q_logvar = self.q_z2_logvar(x)
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/root/vae_vampprior/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/vae_vampprior/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/vae_vampprior/utils/nn.py", line 50, in forward
+    h = self.activation( h )
+        ^^^^^^^^^^^^^^^^^^^^
+  File "/root/vae_vampprior/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1775, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/vae_vampprior/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1786, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/vae_vampprior/.venv/lib/python3.12/site-packages/torch/nn/modules/activation.py", line 292, in forward
+    return F.hardtanh(input, self.min_val, self.max_val, self.inplace)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/vae_vampprior/.venv/lib/python3.12/site-packages/torch/nn/functional.py", line 1759, in hardtanh
+    result = torch._C._nn.hardtanh(input, min_val, max_val)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

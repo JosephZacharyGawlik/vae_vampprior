@@ -1,0 +1,156 @@
+load data
+create model
+Namespace(batch_size=100, test_batch_size=100, epochs=2000, lr=0.0005, early_stopping_epochs=50, warmup=100, no_cuda=False, seed=14, z1_size=40, z2_size=40, input_size=[1, 28, 28], activation=None, number_components=500, pseudoinputs_mean=0.05, pseudoinputs_std=0.01, use_training_data_init=False, model_name='hvae_2level', prior='standard', weighted=True, input_type='binary', flow_layers=8, flow_hidden_dim=128, S=5000, MB=100, dataset_name='static_mnist', dynamic_binarization=False, cuda=True, model_signature='2026-01-21 10:54:27')
+perform experiment
+beta: 0.01
+/root/vae_vampprior/models/Model.py:41: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /pytorch/torch/csrc/tensor/python_tensor.cpp:78.)
+  eps = torch.cuda.FloatTensor(std.size()).normal_()
+/root/vae_vampprior/utils/optimizer.py:75: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha = 1) (Triggered internally at /pytorch/torch/csrc/utils/python_arg_parser.cpp:1805.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+Epoch: 1/2000, Time elapsed: 20.64s
+* Train loss: 108.02   (RE: 105.89, KL: 213.02)
+o Val.  loss: 282.21   (RE: 59.54, KL: 222.67)
+--> Early stopping: 0/50 (BEST: 100000.00)
+
+->model saved<-
+beta: 0.02
+Epoch: 2/2000, Time elapsed: 20.37s
+* Train loss: 55.29   (RE: 50.91, KL: 218.61)
+o Val.  loss: 262.36   (RE: 45.80, KL: 216.56)
+--> Early stopping: 0/50 (BEST: 282.21)
+
+->model saved<-
+beta: 0.03
+Epoch: 3/2000, Time elapsed: 20.64s
+* Train loss: 48.33   (RE: 42.27, KL: 202.18)
+o Val.  loss: 237.79   (RE: 41.29, KL: 196.50)
+--> Early stopping: 0/50 (BEST: 262.36)
+
+->model saved<-
+beta: 0.04
+Epoch: 4/2000, Time elapsed: 20.31s
+* Train loss: 46.32   (RE: 38.94, KL: 184.53)
+o Val.  loss: 216.81   (RE: 39.25, KL: 177.56)
+--> Early stopping: 0/50 (BEST: 237.79)
+
+->model saved<-
+beta: 0.05
+Epoch: 5/2000, Time elapsed: 20.58s
+* Train loss: 45.59   (RE: 37.39, KL: 163.93)
+o Val.  loss: 200.40   (RE: 38.75, KL: 161.64)
+--> Early stopping: 0/50 (BEST: 216.81)
+
+->model saved<-
+beta: 0.06
+Epoch: 6/2000, Time elapsed: 20.56s
+* Train loss: 45.42   (RE: 36.19, KL: 153.70)
+o Val.  loss: 189.13   (RE: 37.78, KL: 151.35)
+--> Early stopping: 0/50 (BEST: 200.40)
+
+->model saved<-
+beta: 0.07
+Epoch: 7/2000, Time elapsed: 20.39s
+* Train loss: 45.62   (RE: 35.35, KL: 146.72)
+o Val.  loss: 182.14   (RE: 37.19, KL: 144.94)
+--> Early stopping: 0/50 (BEST: 189.13)
+
+->model saved<-
+beta: 0.08
+Epoch: 8/2000, Time elapsed: 18.52s
+* Train loss: 45.99   (RE: 34.70, KL: 141.03)
+o Val.  loss: 178.77   (RE: 36.95, KL: 141.82)
+--> Early stopping: 0/50 (BEST: 182.14)
+
+->model saved<-
+beta: 0.09
+Epoch: 9/2000, Time elapsed: 20.22s
+* Train loss: 46.48   (RE: 34.24, KL: 136.02)
+o Val.  loss: 172.92   (RE: 36.82, KL: 136.10)
+--> Early stopping: 0/50 (BEST: 178.77)
+
+->model saved<-
+beta: 0.1
+Epoch: 10/2000, Time elapsed: 20.66s
+* Train loss: 47.04   (RE: 33.88, KL: 131.65)
+o Val.  loss: 167.69   (RE: 36.80, KL: 130.90)
+--> Early stopping: 0/50 (BEST: 172.92)
+
+->model saved<-
+beta: 0.11
+Epoch: 11/2000, Time elapsed: 20.83s
+* Train loss: 47.70   (RE: 33.65, KL: 127.80)
+o Val.  loss: 163.92   (RE: 36.89, KL: 127.03)
+--> Early stopping: 0/50 (BEST: 167.69)
+
+->model saved<-
+beta: 0.12
+Epoch: 12/2000, Time elapsed: 20.18s
+* Train loss: 48.39   (RE: 33.48, KL: 124.19)
+o Val.  loss: 160.84   (RE: 36.85, KL: 123.99)
+--> Early stopping: 0/50 (BEST: 163.92)
+
+->model saved<-
+beta: 0.13
+Epoch: 13/2000, Time elapsed: 20.99s
+* Train loss: 49.10   (RE: 33.38, KL: 120.89)
+o Val.  loss: 157.21   (RE: 36.96, KL: 120.25)
+--> Early stopping: 0/50 (BEST: 160.84)
+
+->model saved<-
+beta: 0.14
+Epoch: 14/2000, Time elapsed: 20.35s
+* Train loss: 49.80   (RE: 33.31, KL: 117.81)
+o Val.  loss: 154.26   (RE: 37.11, KL: 117.15)
+--> Early stopping: 0/50 (BEST: 157.21)
+
+->model saved<-
+beta: 0.15
+Epoch: 15/2000, Time elapsed: 18.96s
+* Train loss: 50.55   (RE: 33.30, KL: 115.02)
+o Val.  loss: 152.21   (RE: 37.10, KL: 115.11)
+--> Early stopping: 0/50 (BEST: 154.26)
+
+->model saved<-
+beta: 0.16
+Epoch: 16/2000, Time elapsed: 20.36s
+* Train loss: 51.30   (RE: 33.32, KL: 112.39)
+o Val.  loss: 149.57   (RE: 37.35, KL: 112.21)
+--> Early stopping: 0/50 (BEST: 152.21)
+
+->model saved<-
+beta: 0.17
+Epoch: 17/2000, Time elapsed: 20.02s
+* Train loss: 52.07   (RE: 33.39, KL: 109.85)
+o Val.  loss: 146.70   (RE: 37.61, KL: 109.10)
+--> Early stopping: 0/50 (BEST: 149.57)
+
+->model saved<-
+beta: 0.18
+Epoch: 18/2000, Time elapsed: 20.55s
+* Train loss: 52.81   (RE: 33.45, KL: 107.55)
+o Val.  loss: 145.79   (RE: 37.55, KL: 108.24)
+--> Early stopping: 0/50 (BEST: 146.70)
+
+->model saved<-
+beta: 0.19
+Traceback (most recent call last):
+  File "/root/vae_vampprior/experiment.py", line 206, in <module>
+    run(args, kwargs)
+  File "/root/vae_vampprior/experiment.py", line 174, in run
+    experiment_vae(args, train_loader, val_loader, test_loader, model, optimizer, dir, model_name = args.model_name)
+  File "/root/vae_vampprior/utils/perform_experiment.py", line 33, in experiment_vae
+    model, train_loss_epoch, train_re_epoch, train_kl_epoch = train(epoch, args, train_loader, model,
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/vae_vampprior/utils/training.py", line 42, in train_vae
+    loss.backward()
+  File "/root/vae_vampprior/.venv/lib/python3.12/site-packages/torch/_tensor.py", line 625, in backward
+    torch.autograd.backward(
+  File "/root/vae_vampprior/.venv/lib/python3.12/site-packages/torch/autograd/__init__.py", line 354, in backward
+    _engine_run_backward(
+  File "/root/vae_vampprior/.venv/lib/python3.12/site-packages/torch/autograd/graph.py", line 841, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

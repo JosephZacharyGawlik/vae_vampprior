@@ -41,15 +41,6 @@ for MODEL in "hvae_2level" "convhvae_2level"; do
     done
 done
 
-# Added back: VampFlowPrior with standard VAE
-VAMPFLOW_K=25 
-FLOW_H=64
-FLOW_D=2
-DATASET_NAME="static_mnist"
-
-echo "SEED=$SEED DATASET_NAME=$DATASET_NAME MODEL_NAME=vae PRIOR=vampflowprior NUMBER_COMPONENTS=$VAMPFLOW_K FLOW_HIDDEN_DIM=$FLOW_H FLOW_LAYERS=$FLOW_D WEIGHTED=True bash shellscripts/run_env_experiments.sh" >> $COMMANDS_FAST
-
-
 # ----------------------------
 # 2. GENERATE PIXEL QUEUE (PixelHVAE)
 # ----------------------------

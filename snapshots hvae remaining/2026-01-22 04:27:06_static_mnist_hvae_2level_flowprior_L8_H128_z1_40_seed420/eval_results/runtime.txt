@@ -1,0 +1,4 @@
+Total training time (seconds): 12653.89
+Total training time (minutes): 210.90
+Start: 1970-01-07 11:35:54.083560
+End: 1970-01-07 15:06:47.972025

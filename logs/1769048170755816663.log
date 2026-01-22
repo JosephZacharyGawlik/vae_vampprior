@@ -1,0 +1,2038 @@
+load data
+create model
+Namespace(batch_size=100, test_batch_size=100, epochs=2000, lr=0.0005, early_stopping_epochs=50, warmup=100, no_cuda=False, seed=420, z1_size=40, z2_size=40, input_size=[1, 28, 28], activation=None, number_components=500, pseudoinputs_mean=0.05, pseudoinputs_std=0.01, use_training_data_init=False, model_name='hvae_2level', prior='vampprior', weighted=False, input_type='binary', flow_layers=8, flow_hidden_dim=128, S=5000, MB=100, dataset_name='static_mnist', dynamic_binarization=False, cuda=True, model_signature='2026-01-22 02:16:12')
+perform experiment
+beta: 0.01
+/root/vae_vampprior/models/Model.py:41: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at /pytorch/torch/csrc/tensor/python_tensor.cpp:78.)
+  eps = torch.cuda.FloatTensor(std.size()).normal_()
+/root/vae_vampprior/utils/optimizer.py:75: UserWarning: This overload of add_ is deprecated:
+	add_(Number alpha, Tensor other)
+Consider using one of the following signatures instead:
+	add_(Tensor other, *, Number alpha = 1) (Triggered internally at /pytorch/torch/csrc/utils/python_arg_parser.cpp:1805.)
+  exp_avg.mul_(beta1).add_(1 - beta1, grad)
+Epoch: 1/2000, Time elapsed: 22.25s
+* Train loss: 108.43   (RE: 106.60, KL: 182.79)
+o Val.  loss: 250.13   (RE: 59.76, KL: 190.37)
+--> Early stopping: 0/50 (BEST: 100000.00)
+
+->model saved<-
+beta: 0.02
+Epoch: 2/2000, Time elapsed: 22.25s
+* Train loss: 54.93   (RE: 51.14, KL: 189.21)
+o Val.  loss: 234.41   (RE: 45.94, KL: 188.48)
+--> Early stopping: 0/50 (BEST: 250.13)
+
+->model saved<-
+beta: 0.03
+Epoch: 3/2000, Time elapsed: 22.24s
+* Train loss: 48.03   (RE: 42.69, KL: 177.94)
+o Val.  loss: 213.72   (RE: 41.71, KL: 172.02)
+--> Early stopping: 0/50 (BEST: 234.41)
+
+->model saved<-
+beta: 0.04
+Epoch: 4/2000, Time elapsed: 22.42s
+* Train loss: 45.98   (RE: 39.36, KL: 165.43)
+o Val.  loss: 203.33   (RE: 39.52, KL: 163.81)
+--> Early stopping: 0/50 (BEST: 213.72)
+
+->model saved<-
+beta: 0.05
+Epoch: 5/2000, Time elapsed: 22.15s
+* Train loss: 45.24   (RE: 37.52, KL: 154.58)
+o Val.  loss: 189.17   (RE: 38.54, KL: 150.63)
+--> Early stopping: 0/50 (BEST: 203.33)
+
+->model saved<-
+beta: 0.06
+Epoch: 6/2000, Time elapsed: 22.39s
+* Train loss: 44.97   (RE: 36.60, KL: 139.46)
+o Val.  loss: 177.56   (RE: 37.73, KL: 139.83)
+--> Early stopping: 0/50 (BEST: 189.17)
+
+->model saved<-
+beta: 0.07
+Epoch: 7/2000, Time elapsed: 22.64s
+* Train loss: 45.00   (RE: 35.72, KL: 132.62)
+o Val.  loss: 170.58   (RE: 37.32, KL: 133.25)
+--> Early stopping: 0/50 (BEST: 177.56)
+
+->model saved<-
+beta: 0.08
+Epoch: 8/2000, Time elapsed: 23.17s
+* Train loss: 45.24   (RE: 35.02, KL: 127.73)
+o Val.  loss: 164.73   (RE: 36.76, KL: 127.96)
+--> Early stopping: 0/50 (BEST: 170.58)
+
+->model saved<-
+beta: 0.09
+Epoch: 9/2000, Time elapsed: 23.19s
+* Train loss: 45.60   (RE: 34.51, KL: 123.22)
+o Val.  loss: 160.91   (RE: 36.68, KL: 124.24)
+--> Early stopping: 0/50 (BEST: 164.73)
+
+->model saved<-
+beta: 0.1
+Epoch: 10/2000, Time elapsed: 23.27s
+* Train loss: 46.09   (RE: 34.14, KL: 119.50)
+o Val.  loss: 156.42   (RE: 36.86, KL: 119.56)
+--> Early stopping: 0/50 (BEST: 160.91)
+
+->model saved<-
+beta: 0.11
+Epoch: 11/2000, Time elapsed: 23.37s
+* Train loss: 46.65   (RE: 33.89, KL: 116.07)
+o Val.  loss: 153.94   (RE: 36.51, KL: 117.43)
+--> Early stopping: 0/50 (BEST: 156.42)
+
+->model saved<-
+beta: 0.12
+Epoch: 12/2000, Time elapsed: 23.18s
+* Train loss: 47.22   (RE: 33.68, KL: 112.76)
+o Val.  loss: 148.78   (RE: 36.68, KL: 112.11)
+--> Early stopping: 0/50 (BEST: 153.94)
+
+->model saved<-
+beta: 0.13
+Epoch: 13/2000, Time elapsed: 23.69s
+* Train loss: 47.87   (RE: 33.57, KL: 109.97)
+o Val.  loss: 146.23   (RE: 36.73, KL: 109.50)
+--> Early stopping: 0/50 (BEST: 148.78)
+
+->model saved<-
+beta: 0.14
+Epoch: 14/2000, Time elapsed: 23.65s
+* Train loss: 48.53   (RE: 33.52, KL: 107.24)
+o Val.  loss: 144.19   (RE: 36.62, KL: 107.58)
+--> Early stopping: 0/50 (BEST: 146.23)
+
+->model saved<-
+beta: 0.15
+Epoch: 15/2000, Time elapsed: 23.43s
+* Train loss: 49.21   (RE: 33.50, KL: 104.78)
+o Val.  loss: 141.85   (RE: 36.85, KL: 105.00)
+--> Early stopping: 0/50 (BEST: 144.19)
+
+->model saved<-
+beta: 0.16
+Epoch: 16/2000, Time elapsed: 23.83s
+* Train loss: 49.89   (RE: 33.49, KL: 102.50)
+o Val.  loss: 139.41   (RE: 37.03, KL: 102.38)
+--> Early stopping: 0/50 (BEST: 141.85)
+
+->model saved<-
+beta: 0.17
+Epoch: 17/2000, Time elapsed: 23.23s
+* Train loss: 50.57   (RE: 33.54, KL: 100.20)
+o Val.  loss: 138.06   (RE: 37.11, KL: 100.95)
+--> Early stopping: 0/50 (BEST: 139.41)
+
+->model saved<-
+beta: 0.18
+Epoch: 18/2000, Time elapsed: 23.44s
+* Train loss: 51.26   (RE: 33.60, KL: 98.11)
+o Val.  loss: 136.42   (RE: 37.27, KL: 99.15)
+--> Early stopping: 0/50 (BEST: 138.06)
+
+->model saved<-
+beta: 0.19
+Epoch: 19/2000, Time elapsed: 23.75s
+* Train loss: 51.99   (RE: 33.71, KL: 96.24)
+o Val.  loss: 133.79   (RE: 37.55, KL: 96.24)
+--> Early stopping: 0/50 (BEST: 136.42)
+
+->model saved<-
+beta: 0.2
+Epoch: 20/2000, Time elapsed: 23.34s
+* Train loss: 52.69   (RE: 33.82, KL: 94.32)
+o Val.  loss: 132.53   (RE: 37.76, KL: 94.77)
+--> Early stopping: 0/50 (BEST: 133.79)
+
+->model saved<-
+beta: 0.21
+Epoch: 21/2000, Time elapsed: 23.24s
+* Train loss: 53.40   (RE: 33.98, KL: 92.47)
+o Val.  loss: 130.20   (RE: 38.20, KL: 92.00)
+--> Early stopping: 0/50 (BEST: 132.53)
+
+->model saved<-
+beta: 0.22
+Epoch: 22/2000, Time elapsed: 21.89s
+* Train loss: 54.06   (RE: 34.09, KL: 90.77)
+o Val.  loss: 129.69   (RE: 38.16, KL: 91.53)
+--> Early stopping: 0/50 (BEST: 130.20)
+
+->model saved<-
+beta: 0.23
+Epoch: 23/2000, Time elapsed: 22.24s
+* Train loss: 54.76   (RE: 34.25, KL: 89.16)
+o Val.  loss: 127.68   (RE: 38.37, KL: 89.31)
+--> Early stopping: 0/50 (BEST: 129.69)
+
+->model saved<-
+beta: 0.24
+Epoch: 24/2000, Time elapsed: 23.48s
+* Train loss: 55.43   (RE: 34.43, KL: 87.51)
+o Val.  loss: 126.02   (RE: 38.51, KL: 87.52)
+--> Early stopping: 0/50 (BEST: 127.68)
+
+->model saved<-
+beta: 0.25
+Epoch: 25/2000, Time elapsed: 23.54s
+* Train loss: 56.10   (RE: 34.58, KL: 86.07)
+o Val.  loss: 125.68   (RE: 38.78, KL: 86.90)
+--> Early stopping: 0/50 (BEST: 126.02)
+
+->model saved<-
+beta: 0.26
+Epoch: 26/2000, Time elapsed: 23.66s
+* Train loss: 56.77   (RE: 34.79, KL: 84.54)
+o Val.  loss: 123.57   (RE: 39.26, KL: 84.31)
+--> Early stopping: 0/50 (BEST: 125.68)
+
+->model saved<-
+beta: 0.27
+Epoch: 27/2000, Time elapsed: 23.35s
+* Train loss: 57.44   (RE: 34.98, KL: 83.18)
+o Val.  loss: 123.20   (RE: 39.22, KL: 83.98)
+--> Early stopping: 0/50 (BEST: 123.57)
+
+->model saved<-
+beta: 0.28
+Epoch: 28/2000, Time elapsed: 23.61s
+* Train loss: 58.11   (RE: 35.21, KL: 81.77)
+o Val.  loss: 121.89   (RE: 39.30, KL: 82.59)
+--> Early stopping: 0/50 (BEST: 123.20)
+
+->model saved<-
+beta: 0.29
+Epoch: 29/2000, Time elapsed: 22.44s
+* Train loss: 58.80   (RE: 35.45, KL: 80.54)
+o Val.  loss: 120.59   (RE: 39.96, KL: 80.64)
+--> Early stopping: 0/50 (BEST: 121.89)
+
+->model saved<-
+beta: 0.3
+Epoch: 30/2000, Time elapsed: 22.98s
+* Train loss: 59.41   (RE: 35.66, KL: 79.18)
+o Val.  loss: 119.10   (RE: 40.23, KL: 78.87)
+--> Early stopping: 0/50 (BEST: 120.59)
+
+->model saved<-
+beta: 0.31
+Epoch: 31/2000, Time elapsed: 23.33s
+* Train loss: 60.07   (RE: 35.90, KL: 77.96)
+o Val.  loss: 118.82   (RE: 40.11, KL: 78.71)
+--> Early stopping: 0/50 (BEST: 119.10)
+
+->model saved<-
+beta: 0.32
+Epoch: 32/2000, Time elapsed: 23.48s
+* Train loss: 60.73   (RE: 36.18, KL: 76.71)
+o Val.  loss: 117.63   (RE: 40.84, KL: 76.79)
+--> Early stopping: 0/50 (BEST: 118.82)
+
+->model saved<-
+beta: 0.33
+Epoch: 33/2000, Time elapsed: 23.03s
+* Train loss: 61.34   (RE: 36.39, KL: 75.59)
+o Val.  loss: 117.03   (RE: 40.79, KL: 76.24)
+--> Early stopping: 0/50 (BEST: 117.63)
+
+->model saved<-
+beta: 0.34
+Epoch: 34/2000, Time elapsed: 23.32s
+* Train loss: 61.95   (RE: 36.64, KL: 74.44)
+o Val.  loss: 116.18   (RE: 41.21, KL: 74.97)
+--> Early stopping: 0/50 (BEST: 117.03)
+
+->model saved<-
+beta: 0.35
+Epoch: 35/2000, Time elapsed: 23.17s
+* Train loss: 62.59   (RE: 36.90, KL: 73.40)
+o Val.  loss: 115.42   (RE: 41.24, KL: 74.17)
+--> Early stopping: 0/50 (BEST: 116.18)
+
+->model saved<-
+beta: 0.36
+Epoch: 36/2000, Time elapsed: 23.46s
+* Train loss: 63.20   (RE: 37.17, KL: 72.31)
+o Val.  loss: 114.45   (RE: 41.64, KL: 72.81)
+--> Early stopping: 0/50 (BEST: 115.42)
+
+->model saved<-
+beta: 0.37
+Epoch: 37/2000, Time elapsed: 23.31s
+* Train loss: 63.80   (RE: 37.44, KL: 71.26)
+o Val.  loss: 113.86   (RE: 41.74, KL: 72.12)
+--> Early stopping: 0/50 (BEST: 114.45)
+
+->model saved<-
+beta: 0.38
+Epoch: 38/2000, Time elapsed: 22.69s
+* Train loss: 64.41   (RE: 37.74, KL: 70.21)
+o Val.  loss: 113.53   (RE: 41.97, KL: 71.57)
+--> Early stopping: 0/50 (BEST: 113.86)
+
+->model saved<-
+beta: 0.39
+Epoch: 39/2000, Time elapsed: 22.73s
+* Train loss: 64.99   (RE: 37.98, KL: 69.26)
+o Val.  loss: 111.77   (RE: 42.78, KL: 68.99)
+--> Early stopping: 0/50 (BEST: 113.53)
+
+->model saved<-
+beta: 0.4
+Epoch: 40/2000, Time elapsed: 23.17s
+* Train loss: 65.57   (RE: 38.27, KL: 68.26)
+o Val.  loss: 111.77   (RE: 42.61, KL: 69.16)
+--> Early stopping: 0/50 (BEST: 111.77)
+
+->model saved<-
+beta: 0.41
+Epoch: 41/2000, Time elapsed: 23.52s
+* Train loss: 66.16   (RE: 38.55, KL: 67.34)
+o Val.  loss: 110.97   (RE: 43.18, KL: 67.79)
+--> Early stopping: 0/50 (BEST: 111.77)
+
+->model saved<-
+beta: 0.42
+Epoch: 42/2000, Time elapsed: 23.18s
+* Train loss: 66.69   (RE: 38.82, KL: 66.36)
+o Val.  loss: 110.35   (RE: 43.47, KL: 66.88)
+--> Early stopping: 0/50 (BEST: 110.97)
+
+->model saved<-
+beta: 0.43
+Epoch: 43/2000, Time elapsed: 23.59s
+* Train loss: 67.32   (RE: 39.16, KL: 65.50)
+o Val.  loss: 109.83   (RE: 43.51, KL: 66.33)
+--> Early stopping: 0/50 (BEST: 110.35)
+
+->model saved<-
+beta: 0.44
+Epoch: 44/2000, Time elapsed: 23.32s
+* Train loss: 67.88   (RE: 39.42, KL: 64.68)
+o Val.  loss: 109.12   (RE: 43.98, KL: 65.14)
+--> Early stopping: 0/50 (BEST: 109.83)
+
+->model saved<-
+beta: 0.45
+Epoch: 45/2000, Time elapsed: 23.01s
+* Train loss: 68.41   (RE: 39.72, KL: 63.76)
+o Val.  loss: 108.85   (RE: 43.94, KL: 64.91)
+--> Early stopping: 0/50 (BEST: 109.12)
+
+->model saved<-
+beta: 0.46
+Epoch: 46/2000, Time elapsed: 23.33s
+* Train loss: 68.97   (RE: 40.02, KL: 62.94)
+o Val.  loss: 108.05   (RE: 44.54, KL: 63.52)
+--> Early stopping: 0/50 (BEST: 108.85)
+
+->model saved<-
+beta: 0.47
+Epoch: 47/2000, Time elapsed: 23.40s
+* Train loss: 69.52   (RE: 40.34, KL: 62.08)
+o Val.  loss: 107.89   (RE: 44.64, KL: 63.25)
+--> Early stopping: 0/50 (BEST: 108.05)
+
+->model saved<-
+beta: 0.48
+Epoch: 48/2000, Time elapsed: 23.64s
+* Train loss: 70.02   (RE: 40.62, KL: 61.26)
+o Val.  loss: 107.21   (RE: 44.85, KL: 62.37)
+--> Early stopping: 0/50 (BEST: 107.89)
+
+->model saved<-
+beta: 0.49
+Epoch: 49/2000, Time elapsed: 23.52s
+* Train loss: 70.57   (RE: 40.92, KL: 60.51)
+o Val.  loss: 106.74   (RE: 45.45, KL: 61.29)
+--> Early stopping: 0/50 (BEST: 107.21)
+
+->model saved<-
+beta: 0.5
+Epoch: 50/2000, Time elapsed: 22.57s
+* Train loss: 71.10   (RE: 41.25, KL: 59.71)
+o Val.  loss: 105.77   (RE: 45.70, KL: 60.06)
+--> Early stopping: 0/50 (BEST: 106.74)
+
+->model saved<-
+beta: 0.51
+Epoch: 51/2000, Time elapsed: 23.40s
+* Train loss: 71.61   (RE: 41.55, KL: 58.94)
+o Val.  loss: 105.73   (RE: 45.95, KL: 59.78)
+--> Early stopping: 0/50 (BEST: 105.77)
+
+->model saved<-
+beta: 0.52
+Epoch: 52/2000, Time elapsed: 24.04s
+* Train loss: 72.15   (RE: 41.88, KL: 58.20)
+o Val.  loss: 104.98   (RE: 46.45, KL: 58.53)
+--> Early stopping: 0/50 (BEST: 105.73)
+
+->model saved<-
+beta: 0.53
+Epoch: 53/2000, Time elapsed: 23.12s
+* Train loss: 72.63   (RE: 42.18, KL: 57.45)
+o Val.  loss: 104.73   (RE: 46.88, KL: 57.84)
+--> Early stopping: 0/50 (BEST: 104.98)
+
+->model saved<-
+beta: 0.54
+Epoch: 54/2000, Time elapsed: 24.65s
+* Train loss: 73.14   (RE: 42.51, KL: 56.73)
+o Val.  loss: 104.06   (RE: 46.95, KL: 57.11)
+--> Early stopping: 0/50 (BEST: 104.73)
+
+->model saved<-
+beta: 0.55
+Epoch: 55/2000, Time elapsed: 23.69s
+* Train loss: 73.58   (RE: 42.77, KL: 56.02)
+o Val.  loss: 103.84   (RE: 47.17, KL: 56.67)
+--> Early stopping: 0/50 (BEST: 104.06)
+
+->model saved<-
+beta: 0.56
+Epoch: 56/2000, Time elapsed: 23.35s
+* Train loss: 74.11   (RE: 43.12, KL: 55.33)
+o Val.  loss: 103.29   (RE: 47.67, KL: 55.62)
+--> Early stopping: 0/50 (BEST: 103.84)
+
+->model saved<-
+beta: 0.57
+Epoch: 57/2000, Time elapsed: 24.36s
+* Train loss: 74.61   (RE: 43.43, KL: 54.70)
+o Val.  loss: 102.79   (RE: 48.07, KL: 54.72)
+--> Early stopping: 0/50 (BEST: 103.29)
+
+->model saved<-
+beta: 0.58
+Epoch: 58/2000, Time elapsed: 24.14s
+* Train loss: 75.05   (RE: 43.73, KL: 54.00)
+o Val.  loss: 102.75   (RE: 47.96, KL: 54.79)
+--> Early stopping: 0/50 (BEST: 102.79)
+
+->model saved<-
+beta: 0.59
+Epoch: 59/2000, Time elapsed: 24.89s
+* Train loss: 75.54   (RE: 44.07, KL: 53.34)
+o Val.  loss: 102.15   (RE: 48.37, KL: 53.78)
+--> Early stopping: 0/50 (BEST: 102.75)
+
+->model saved<-
+beta: 0.6
+Epoch: 60/2000, Time elapsed: 24.14s
+* Train loss: 76.01   (RE: 44.39, KL: 52.70)
+o Val.  loss: 102.39   (RE: 48.54, KL: 53.85)
+--> Early stopping: 0/50 (BEST: 102.15)
+
+beta: 0.61
+Epoch: 61/2000, Time elapsed: 24.30s
+* Train loss: 76.46   (RE: 44.70, KL: 52.08)
+o Val.  loss: 101.69   (RE: 48.83, KL: 52.85)
+--> Early stopping: 0/50 (BEST: 102.15)
+
+->model saved<-
+beta: 0.62
+Epoch: 62/2000, Time elapsed: 24.34s
+* Train loss: 76.91   (RE: 45.02, KL: 51.45)
+o Val.  loss: 101.50   (RE: 49.53, KL: 51.98)
+--> Early stopping: 0/50 (BEST: 101.69)
+
+->model saved<-
+beta: 0.63
+Epoch: 63/2000, Time elapsed: 23.90s
+* Train loss: 77.37   (RE: 45.35, KL: 50.83)
+o Val.  loss: 101.18   (RE: 49.68, KL: 51.49)
+--> Early stopping: 0/50 (BEST: 101.50)
+
+->model saved<-
+beta: 0.64
+Epoch: 64/2000, Time elapsed: 22.84s
+* Train loss: 77.83   (RE: 45.70, KL: 50.22)
+o Val.  loss: 100.79   (RE: 49.74, KL: 51.05)
+--> Early stopping: 0/50 (BEST: 101.18)
+
+->model saved<-
+beta: 0.65
+Epoch: 65/2000, Time elapsed: 23.10s
+* Train loss: 78.26   (RE: 46.04, KL: 49.58)
+o Val.  loss: 100.26   (RE: 50.63, KL: 49.63)
+--> Early stopping: 0/50 (BEST: 100.79)
+
+->model saved<-
+beta: 0.66
+Epoch: 66/2000, Time elapsed: 23.59s
+* Train loss: 78.70   (RE: 46.35, KL: 49.02)
+o Val.  loss: 100.37   (RE: 50.41, KL: 49.95)
+--> Early stopping: 0/50 (BEST: 100.26)
+
+beta: 0.67
+Epoch: 67/2000, Time elapsed: 23.55s
+* Train loss: 79.14   (RE: 46.68, KL: 48.45)
+o Val.  loss: 100.02   (RE: 50.81, KL: 49.20)
+--> Early stopping: 0/50 (BEST: 100.26)
+
+->model saved<-
+beta: 0.68
+Epoch: 68/2000, Time elapsed: 23.16s
+* Train loss: 79.55   (RE: 46.99, KL: 47.88)
+o Val.  loss: 99.80   (RE: 50.89, KL: 48.91)
+--> Early stopping: 0/50 (BEST: 100.02)
+
+->model saved<-
+beta: 0.69
+Epoch: 69/2000, Time elapsed: 23.52s
+* Train loss: 79.98   (RE: 47.32, KL: 47.33)
+o Val.  loss: 99.50   (RE: 51.49, KL: 48.01)
+--> Early stopping: 0/50 (BEST: 99.80)
+
+->model saved<-
+beta: 0.7
+Epoch: 70/2000, Time elapsed: 23.56s
+* Train loss: 80.39   (RE: 47.66, KL: 46.76)
+o Val.  loss: 99.33   (RE: 51.46, KL: 47.87)
+--> Early stopping: 0/50 (BEST: 99.50)
+
+->model saved<-
+beta: 0.71
+Epoch: 71/2000, Time elapsed: 22.90s
+* Train loss: 80.78   (RE: 47.99, KL: 46.18)
+o Val.  loss: 99.07   (RE: 51.90, KL: 47.17)
+--> Early stopping: 0/50 (BEST: 99.33)
+
+->model saved<-
+beta: 0.72
+Epoch: 72/2000, Time elapsed: 23.05s
+* Train loss: 81.18   (RE: 48.29, KL: 45.68)
+o Val.  loss: 98.83   (RE: 52.32, KL: 46.51)
+--> Early stopping: 0/50 (BEST: 99.07)
+
+->model saved<-
+beta: 0.73
+Epoch: 73/2000, Time elapsed: 23.34s
+* Train loss: 81.56   (RE: 48.61, KL: 45.14)
+o Val.  loss: 98.23   (RE: 52.72, KL: 45.50)
+--> Early stopping: 0/50 (BEST: 98.83)
+
+->model saved<-
+beta: 0.74
+Epoch: 74/2000, Time elapsed: 23.42s
+* Train loss: 81.98   (RE: 48.96, KL: 44.62)
+o Val.  loss: 98.26   (RE: 53.06, KL: 45.20)
+--> Early stopping: 0/50 (BEST: 98.23)
+
+beta: 0.75
+Epoch: 75/2000, Time elapsed: 23.58s
+* Train loss: 82.35   (RE: 49.27, KL: 44.11)
+o Val.  loss: 97.93   (RE: 53.23, KL: 44.70)
+--> Early stopping: 0/50 (BEST: 98.23)
+
+->model saved<-
+beta: 0.76
+Epoch: 76/2000, Time elapsed: 23.49s
+* Train loss: 82.73   (RE: 49.61, KL: 43.58)
+o Val.  loss: 97.76   (RE: 53.78, KL: 43.99)
+--> Early stopping: 0/50 (BEST: 97.93)
+
+->model saved<-
+beta: 0.77
+Epoch: 77/2000, Time elapsed: 23.44s
+* Train loss: 83.11   (RE: 49.94, KL: 43.08)
+o Val.  loss: 97.64   (RE: 54.34, KL: 43.31)
+--> Early stopping: 0/50 (BEST: 97.76)
+
+->model saved<-
+beta: 0.78
+Epoch: 78/2000, Time elapsed: 23.54s
+* Train loss: 83.51   (RE: 50.28, KL: 42.60)
+o Val.  loss: 97.43   (RE: 54.35, KL: 43.09)
+--> Early stopping: 0/50 (BEST: 97.64)
+
+->model saved<-
+beta: 0.79
+Epoch: 79/2000, Time elapsed: 23.31s
+* Train loss: 83.84   (RE: 50.56, KL: 42.13)
+o Val.  loss: 97.15   (RE: 54.74, KL: 42.41)
+--> Early stopping: 0/50 (BEST: 97.43)
+
+->model saved<-
+beta: 0.8
+Epoch: 80/2000, Time elapsed: 24.06s
+* Train loss: 84.21   (RE: 50.90, KL: 41.65)
+o Val.  loss: 97.14   (RE: 54.87, KL: 42.27)
+--> Early stopping: 0/50 (BEST: 97.15)
+
+->model saved<-
+beta: 0.81
+Epoch: 81/2000, Time elapsed: 23.00s
+* Train loss: 84.56   (RE: 51.21, KL: 41.18)
+o Val.  loss: 96.83   (RE: 54.97, KL: 41.86)
+--> Early stopping: 0/50 (BEST: 97.14)
+
+->model saved<-
+beta: 0.82
+Epoch: 82/2000, Time elapsed: 22.68s
+* Train loss: 84.95   (RE: 51.57, KL: 40.71)
+o Val.  loss: 96.76   (RE: 55.41, KL: 41.35)
+--> Early stopping: 0/50 (BEST: 96.83)
+
+->model saved<-
+beta: 0.83
+Epoch: 83/2000, Time elapsed: 23.57s
+* Train loss: 85.28   (RE: 51.87, KL: 40.25)
+o Val.  loss: 96.57   (RE: 55.56, KL: 41.01)
+--> Early stopping: 0/50 (BEST: 96.76)
+
+->model saved<-
+beta: 0.84
+Epoch: 84/2000, Time elapsed: 23.01s
+* Train loss: 85.62   (RE: 52.19, KL: 39.80)
+o Val.  loss: 96.48   (RE: 56.17, KL: 40.30)
+--> Early stopping: 0/50 (BEST: 96.57)
+
+->model saved<-
+beta: 0.85
+Epoch: 85/2000, Time elapsed: 23.55s
+* Train loss: 86.02   (RE: 52.55, KL: 39.38)
+o Val.  loss: 96.23   (RE: 56.38, KL: 39.84)
+--> Early stopping: 0/50 (BEST: 96.48)
+
+->model saved<-
+beta: 0.86
+Epoch: 86/2000, Time elapsed: 23.83s
+* Train loss: 86.30   (RE: 52.84, KL: 38.91)
+o Val.  loss: 96.19   (RE: 56.54, KL: 39.65)
+--> Early stopping: 0/50 (BEST: 96.23)
+
+->model saved<-
+beta: 0.87
+Epoch: 87/2000, Time elapsed: 23.35s
+* Train loss: 86.65   (RE: 53.16, KL: 38.50)
+o Val.  loss: 96.09   (RE: 56.82, KL: 39.27)
+--> Early stopping: 0/50 (BEST: 96.19)
+
+->model saved<-
+beta: 0.88
+Epoch: 88/2000, Time elapsed: 22.58s
+* Train loss: 87.00   (RE: 53.50, KL: 38.07)
+o Val.  loss: 95.87   (RE: 56.92, KL: 38.95)
+--> Early stopping: 0/50 (BEST: 96.09)
+
+->model saved<-
+beta: 0.89
+Epoch: 89/2000, Time elapsed: 22.71s
+* Train loss: 87.28   (RE: 53.77, KL: 37.65)
+o Val.  loss: 95.81   (RE: 57.64, KL: 38.17)
+--> Early stopping: 0/50 (BEST: 95.87)
+
+->model saved<-
+beta: 0.9
+Epoch: 90/2000, Time elapsed: 22.86s
+* Train loss: 87.59   (RE: 54.12, KL: 37.19)
+o Val.  loss: 95.59   (RE: 57.83, KL: 37.75)
+--> Early stopping: 0/50 (BEST: 95.81)
+
+->model saved<-
+beta: 0.91
+Epoch: 91/2000, Time elapsed: 22.96s
+* Train loss: 87.89   (RE: 54.38, KL: 36.83)
+o Val.  loss: 95.46   (RE: 58.10, KL: 37.36)
+--> Early stopping: 0/50 (BEST: 95.59)
+
+->model saved<-
+beta: 0.92
+Epoch: 92/2000, Time elapsed: 23.14s
+* Train loss: 88.23   (RE: 54.70, KL: 36.45)
+o Val.  loss: 95.39   (RE: 58.03, KL: 37.36)
+--> Early stopping: 0/50 (BEST: 95.46)
+
+->model saved<-
+beta: 0.93
+Epoch: 93/2000, Time elapsed: 23.26s
+* Train loss: 88.51   (RE: 55.02, KL: 36.01)
+o Val.  loss: 95.29   (RE: 58.65, KL: 36.64)
+--> Early stopping: 0/50 (BEST: 95.39)
+
+->model saved<-
+beta: 0.94
+Epoch: 94/2000, Time elapsed: 23.65s
+* Train loss: 88.81   (RE: 55.31, KL: 35.64)
+o Val.  loss: 95.11   (RE: 58.69, KL: 36.42)
+--> Early stopping: 0/50 (BEST: 95.29)
+
+->model saved<-
+beta: 0.95
+Epoch: 95/2000, Time elapsed: 23.81s
+* Train loss: 89.14   (RE: 55.62, KL: 35.28)
+o Val.  loss: 94.90   (RE: 59.46, KL: 35.43)
+--> Early stopping: 0/50 (BEST: 95.11)
+
+->model saved<-
+beta: 0.96
+Epoch: 96/2000, Time elapsed: 23.76s
+* Train loss: 89.42   (RE: 55.92, KL: 34.90)
+o Val.  loss: 94.86   (RE: 59.69, KL: 35.17)
+--> Early stopping: 0/50 (BEST: 94.90)
+
+->model saved<-
+beta: 0.97
+Epoch: 97/2000, Time elapsed: 23.70s
+* Train loss: 89.69   (RE: 56.19, KL: 34.54)
+o Val.  loss: 94.68   (RE: 59.76, KL: 34.92)
+--> Early stopping: 0/50 (BEST: 94.86)
+
+->model saved<-
+beta: 0.98
+Epoch: 98/2000, Time elapsed: 23.32s
+* Train loss: 89.99   (RE: 56.50, KL: 34.18)
+o Val.  loss: 94.73   (RE: 59.83, KL: 34.90)
+--> Early stopping: 0/50 (BEST: 94.68)
+
+beta: 0.99
+Epoch: 99/2000, Time elapsed: 23.58s
+* Train loss: 90.31   (RE: 56.82, KL: 33.83)
+o Val.  loss: 94.49   (RE: 60.15, KL: 34.35)
+--> Early stopping: 0/50 (BEST: 94.68)
+
+->model saved<-
+beta: 1.0
+Epoch: 100/2000, Time elapsed: 23.37s
+* Train loss: 90.55   (RE: 57.09, KL: 33.46)
+o Val.  loss: 94.56   (RE: 60.76, KL: 33.81)
+--> Early stopping: 0/50 (BEST: 94.49)
+
+beta: 1.0
+Epoch: 101/2000, Time elapsed: 23.90s
+* Train loss: 90.50   (RE: 57.21, KL: 33.29)
+o Val.  loss: 94.49   (RE: 60.15, KL: 34.34)
+--> Early stopping: 1/50 (BEST: 94.49)
+
+->model saved<-
+beta: 1.0
+Epoch: 102/2000, Time elapsed: 23.94s
+* Train loss: 90.45   (RE: 57.28, KL: 33.17)
+o Val.  loss: 94.37   (RE: 60.70, KL: 33.67)
+--> Early stopping: 0/50 (BEST: 94.49)
+
+->model saved<-
+beta: 1.0
+Epoch: 103/2000, Time elapsed: 23.52s
+* Train loss: 90.38   (RE: 57.33, KL: 33.05)
+o Val.  loss: 94.40   (RE: 60.80, KL: 33.60)
+--> Early stopping: 0/50 (BEST: 94.37)
+
+beta: 1.0
+Epoch: 104/2000, Time elapsed: 23.68s
+* Train loss: 90.33   (RE: 57.38, KL: 32.96)
+o Val.  loss: 94.20   (RE: 60.69, KL: 33.51)
+--> Early stopping: 1/50 (BEST: 94.37)
+
+->model saved<-
+beta: 1.0
+Epoch: 105/2000, Time elapsed: 23.50s
+* Train loss: 90.24   (RE: 57.40, KL: 32.84)
+o Val.  loss: 94.28   (RE: 60.98, KL: 33.30)
+--> Early stopping: 0/50 (BEST: 94.20)
+
+beta: 1.0
+Epoch: 106/2000, Time elapsed: 23.11s
+* Train loss: 90.17   (RE: 57.45, KL: 32.72)
+o Val.  loss: 94.22   (RE: 60.93, KL: 33.29)
+--> Early stopping: 1/50 (BEST: 94.20)
+
+beta: 1.0
+Epoch: 107/2000, Time elapsed: 23.91s
+* Train loss: 90.15   (RE: 57.48, KL: 32.68)
+o Val.  loss: 93.96   (RE: 60.91, KL: 33.04)
+--> Early stopping: 2/50 (BEST: 94.20)
+
+->model saved<-
+beta: 1.0
+Epoch: 108/2000, Time elapsed: 23.73s
+* Train loss: 90.08   (RE: 57.51, KL: 32.58)
+o Val.  loss: 94.16   (RE: 61.02, KL: 33.14)
+--> Early stopping: 0/50 (BEST: 93.96)
+
+beta: 1.0
+Epoch: 109/2000, Time elapsed: 23.61s
+* Train loss: 90.00   (RE: 57.52, KL: 32.49)
+o Val.  loss: 93.89   (RE: 60.90, KL: 32.99)
+--> Early stopping: 1/50 (BEST: 93.96)
+
+->model saved<-
+beta: 1.0
+Epoch: 110/2000, Time elapsed: 23.90s
+* Train loss: 89.94   (RE: 57.52, KL: 32.42)
+o Val.  loss: 93.93   (RE: 60.96, KL: 32.97)
+--> Early stopping: 0/50 (BEST: 93.89)
+
+beta: 1.0
+Epoch: 111/2000, Time elapsed: 23.74s
+* Train loss: 89.89   (RE: 57.57, KL: 32.32)
+o Val.  loss: 93.81   (RE: 61.00, KL: 32.81)
+--> Early stopping: 1/50 (BEST: 93.89)
+
+->model saved<-
+beta: 1.0
+Epoch: 112/2000, Time elapsed: 23.44s
+* Train loss: 89.83   (RE: 57.56, KL: 32.26)
+o Val.  loss: 93.74   (RE: 61.23, KL: 32.51)
+--> Early stopping: 0/50 (BEST: 93.81)
+
+->model saved<-
+beta: 1.0
+Epoch: 113/2000, Time elapsed: 22.16s
+* Train loss: 89.75   (RE: 57.57, KL: 32.18)
+o Val.  loss: 93.69   (RE: 61.00, KL: 32.68)
+--> Early stopping: 0/50 (BEST: 93.74)
+
+->model saved<-
+beta: 1.0
+Epoch: 114/2000, Time elapsed: 23.39s
+* Train loss: 89.72   (RE: 57.60, KL: 32.12)
+o Val.  loss: 93.79   (RE: 61.02, KL: 32.77)
+--> Early stopping: 0/50 (BEST: 93.69)
+
+beta: 1.0
+Epoch: 115/2000, Time elapsed: 23.47s
+* Train loss: 89.69   (RE: 57.61, KL: 32.08)
+o Val.  loss: 93.84   (RE: 61.08, KL: 32.76)
+--> Early stopping: 1/50 (BEST: 93.69)
+
+beta: 1.0
+Epoch: 116/2000, Time elapsed: 21.39s
+* Train loss: 89.60   (RE: 57.59, KL: 32.01)
+o Val.  loss: 93.57   (RE: 61.13, KL: 32.44)
+--> Early stopping: 2/50 (BEST: 93.69)
+
+->model saved<-
+beta: 1.0
+Epoch: 117/2000, Time elapsed: 23.71s
+* Train loss: 89.57   (RE: 57.60, KL: 31.97)
+o Val.  loss: 93.54   (RE: 61.02, KL: 32.52)
+--> Early stopping: 0/50 (BEST: 93.57)
+
+->model saved<-
+beta: 1.0
+Epoch: 118/2000, Time elapsed: 23.51s
+* Train loss: 89.48   (RE: 57.61, KL: 31.87)
+o Val.  loss: 93.54   (RE: 60.95, KL: 32.59)
+--> Early stopping: 0/50 (BEST: 93.54)
+
+beta: 1.0
+Epoch: 119/2000, Time elapsed: 22.70s
+* Train loss: 89.49   (RE: 57.67, KL: 31.82)
+o Val.  loss: 93.46   (RE: 61.04, KL: 32.42)
+--> Early stopping: 1/50 (BEST: 93.54)
+
+->model saved<-
+beta: 1.0
+Epoch: 120/2000, Time elapsed: 23.15s
+* Train loss: 89.41   (RE: 57.61, KL: 31.80)
+o Val.  loss: 93.34   (RE: 60.93, KL: 32.41)
+--> Early stopping: 0/50 (BEST: 93.46)
+
+->model saved<-
+beta: 1.0
+Epoch: 121/2000, Time elapsed: 23.78s
+* Train loss: 89.36   (RE: 57.63, KL: 31.73)
+o Val.  loss: 93.54   (RE: 61.07, KL: 32.48)
+--> Early stopping: 0/50 (BEST: 93.34)
+
+beta: 1.0
+Epoch: 122/2000, Time elapsed: 23.32s
+* Train loss: 89.30   (RE: 57.62, KL: 31.68)
+o Val.  loss: 93.46   (RE: 61.23, KL: 32.23)
+--> Early stopping: 1/50 (BEST: 93.34)
+
+beta: 1.0
+Epoch: 123/2000, Time elapsed: 23.77s
+* Train loss: 89.25   (RE: 57.62, KL: 31.64)
+o Val.  loss: 93.45   (RE: 61.09, KL: 32.35)
+--> Early stopping: 2/50 (BEST: 93.34)
+
+beta: 1.0
+Epoch: 124/2000, Time elapsed: 23.09s
+* Train loss: 89.21   (RE: 57.64, KL: 31.57)
+o Val.  loss: 93.36   (RE: 61.10, KL: 32.25)
+--> Early stopping: 3/50 (BEST: 93.34)
+
+beta: 1.0
+Epoch: 125/2000, Time elapsed: 23.53s
+* Train loss: 89.16   (RE: 57.62, KL: 31.54)
+o Val.  loss: 93.36   (RE: 61.24, KL: 32.11)
+--> Early stopping: 4/50 (BEST: 93.34)
+
+beta: 1.0
+Epoch: 126/2000, Time elapsed: 23.73s
+* Train loss: 89.09   (RE: 57.63, KL: 31.46)
+o Val.  loss: 93.23   (RE: 61.12, KL: 32.12)
+--> Early stopping: 5/50 (BEST: 93.34)
+
+->model saved<-
+beta: 1.0
+Epoch: 127/2000, Time elapsed: 24.04s
+* Train loss: 89.07   (RE: 57.63, KL: 31.44)
+o Val.  loss: 93.19   (RE: 61.42, KL: 31.77)
+--> Early stopping: 0/50 (BEST: 93.23)
+
+->model saved<-
+beta: 1.0
+Epoch: 128/2000, Time elapsed: 23.34s
+* Train loss: 89.02   (RE: 57.64, KL: 31.38)
+o Val.  loss: 93.16   (RE: 61.30, KL: 31.86)
+--> Early stopping: 0/50 (BEST: 93.19)
+
+->model saved<-
+beta: 1.0
+Epoch: 129/2000, Time elapsed: 23.15s
+* Train loss: 88.98   (RE: 57.65, KL: 31.33)
+o Val.  loss: 93.21   (RE: 61.38, KL: 31.84)
+--> Early stopping: 0/50 (BEST: 93.16)
+
+beta: 1.0
+Epoch: 130/2000, Time elapsed: 23.24s
+* Train loss: 88.90   (RE: 57.58, KL: 31.32)
+o Val.  loss: 93.09   (RE: 61.13, KL: 31.96)
+--> Early stopping: 1/50 (BEST: 93.16)
+
+->model saved<-
+beta: 1.0
+Epoch: 131/2000, Time elapsed: 23.67s
+* Train loss: 88.88   (RE: 57.60, KL: 31.29)
+o Val.  loss: 93.21   (RE: 61.29, KL: 31.92)
+--> Early stopping: 0/50 (BEST: 93.09)
+
+beta: 1.0
+Epoch: 132/2000, Time elapsed: 22.44s
+* Train loss: 88.84   (RE: 57.60, KL: 31.24)
+o Val.  loss: 92.99   (RE: 61.27, KL: 31.72)
+--> Early stopping: 1/50 (BEST: 93.09)
+
+->model saved<-
+beta: 1.0
+Epoch: 133/2000, Time elapsed: 22.49s
+* Train loss: 88.80   (RE: 57.60, KL: 31.21)
+o Val.  loss: 93.18   (RE: 61.34, KL: 31.83)
+--> Early stopping: 0/50 (BEST: 92.99)
+
+beta: 1.0
+Epoch: 134/2000, Time elapsed: 22.68s
+* Train loss: 88.74   (RE: 57.61, KL: 31.13)
+o Val.  loss: 93.03   (RE: 61.30, KL: 31.73)
+--> Early stopping: 1/50 (BEST: 92.99)
+
+beta: 1.0
+Epoch: 135/2000, Time elapsed: 23.26s
+* Train loss: 88.68   (RE: 57.55, KL: 31.12)
+o Val.  loss: 92.99   (RE: 61.08, KL: 31.92)
+--> Early stopping: 2/50 (BEST: 92.99)
+
+beta: 1.0
+Epoch: 136/2000, Time elapsed: 23.70s
+* Train loss: 88.67   (RE: 57.57, KL: 31.10)
+o Val.  loss: 93.06   (RE: 61.13, KL: 31.93)
+--> Early stopping: 3/50 (BEST: 92.99)
+
+beta: 1.0
+Epoch: 137/2000, Time elapsed: 23.27s
+* Train loss: 88.59   (RE: 57.55, KL: 31.04)
+o Val.  loss: 92.91   (RE: 61.30, KL: 31.61)
+--> Early stopping: 4/50 (BEST: 92.99)
+
+->model saved<-
+beta: 1.0
+Epoch: 138/2000, Time elapsed: 23.91s
+* Train loss: 88.57   (RE: 57.54, KL: 31.03)
+o Val.  loss: 92.78   (RE: 61.39, KL: 31.39)
+--> Early stopping: 0/50 (BEST: 92.91)
+
+->model saved<-
+beta: 1.0
+Epoch: 139/2000, Time elapsed: 23.25s
+* Train loss: 88.51   (RE: 57.54, KL: 30.97)
+o Val.  loss: 92.91   (RE: 61.14, KL: 31.77)
+--> Early stopping: 0/50 (BEST: 92.78)
+
+beta: 1.0
+Epoch: 140/2000, Time elapsed: 23.17s
+* Train loss: 88.49   (RE: 57.54, KL: 30.95)
+o Val.  loss: 92.82   (RE: 61.19, KL: 31.63)
+--> Early stopping: 1/50 (BEST: 92.78)
+
+beta: 1.0
+Epoch: 141/2000, Time elapsed: 23.51s
+* Train loss: 88.44   (RE: 57.54, KL: 30.90)
+o Val.  loss: 92.93   (RE: 61.36, KL: 31.57)
+--> Early stopping: 2/50 (BEST: 92.78)
+
+beta: 1.0
+Epoch: 142/2000, Time elapsed: 23.73s
+* Train loss: 88.41   (RE: 57.53, KL: 30.89)
+o Val.  loss: 92.71   (RE: 61.10, KL: 31.60)
+--> Early stopping: 3/50 (BEST: 92.78)
+
+->model saved<-
+beta: 1.0
+Epoch: 143/2000, Time elapsed: 22.79s
+* Train loss: 88.35   (RE: 57.49, KL: 30.85)
+o Val.  loss: 92.79   (RE: 61.61, KL: 31.18)
+--> Early stopping: 0/50 (BEST: 92.71)
+
+beta: 1.0
+Epoch: 144/2000, Time elapsed: 23.52s
+* Train loss: 88.28   (RE: 57.48, KL: 30.80)
+o Val.  loss: 92.72   (RE: 61.04, KL: 31.67)
+--> Early stopping: 1/50 (BEST: 92.71)
+
+beta: 1.0
+Epoch: 145/2000, Time elapsed: 23.15s
+* Train loss: 88.27   (RE: 57.47, KL: 30.80)
+o Val.  loss: 92.67   (RE: 61.21, KL: 31.47)
+--> Early stopping: 2/50 (BEST: 92.71)
+
+->model saved<-
+beta: 1.0
+Epoch: 146/2000, Time elapsed: 22.97s
+* Train loss: 88.19   (RE: 57.46, KL: 30.72)
+o Val.  loss: 92.75   (RE: 61.59, KL: 31.15)
+--> Early stopping: 0/50 (BEST: 92.67)
+
+beta: 1.0
+Epoch: 147/2000, Time elapsed: 23.10s
+* Train loss: 88.21   (RE: 57.49, KL: 30.71)
+o Val.  loss: 92.56   (RE: 61.19, KL: 31.37)
+--> Early stopping: 1/50 (BEST: 92.67)
+
+->model saved<-
+beta: 1.0
+Epoch: 148/2000, Time elapsed: 23.91s
+* Train loss: 88.15   (RE: 57.42, KL: 30.72)
+o Val.  loss: 92.55   (RE: 61.34, KL: 31.21)
+--> Early stopping: 0/50 (BEST: 92.56)
+
+->model saved<-
+beta: 1.0
+Epoch: 149/2000, Time elapsed: 22.88s
+* Train loss: 88.10   (RE: 57.44, KL: 30.66)
+o Val.  loss: 92.52   (RE: 61.61, KL: 30.91)
+--> Early stopping: 0/50 (BEST: 92.55)
+
+->model saved<-
+beta: 1.0
+Epoch: 150/2000, Time elapsed: 23.42s
+* Train loss: 88.07   (RE: 57.44, KL: 30.63)
+o Val.  loss: 92.57   (RE: 61.31, KL: 31.26)
+--> Early stopping: 0/50 (BEST: 92.52)
+
+beta: 1.0
+Epoch: 151/2000, Time elapsed: 23.30s
+* Train loss: 88.04   (RE: 57.41, KL: 30.63)
+o Val.  loss: 92.56   (RE: 61.74, KL: 30.83)
+--> Early stopping: 1/50 (BEST: 92.52)
+
+beta: 1.0
+Epoch: 152/2000, Time elapsed: 22.69s
+* Train loss: 87.98   (RE: 57.40, KL: 30.58)
+o Val.  loss: 92.46   (RE: 61.09, KL: 31.38)
+--> Early stopping: 2/50 (BEST: 92.52)
+
+->model saved<-
+beta: 1.0
+Epoch: 153/2000, Time elapsed: 22.37s
+* Train loss: 87.94   (RE: 57.35, KL: 30.59)
+o Val.  loss: 92.63   (RE: 61.46, KL: 31.17)
+--> Early stopping: 0/50 (BEST: 92.46)
+
+beta: 1.0
+Epoch: 154/2000, Time elapsed: 22.27s
+* Train loss: 87.88   (RE: 57.34, KL: 30.55)
+o Val.  loss: 92.61   (RE: 61.09, KL: 31.52)
+--> Early stopping: 1/50 (BEST: 92.46)
+
+beta: 1.0
+Epoch: 155/2000, Time elapsed: 22.19s
+* Train loss: 87.87   (RE: 57.32, KL: 30.54)
+o Val.  loss: 92.41   (RE: 61.26, KL: 31.15)
+--> Early stopping: 2/50 (BEST: 92.46)
+
+->model saved<-
+beta: 1.0
+Epoch: 156/2000, Time elapsed: 22.12s
+* Train loss: 87.84   (RE: 57.34, KL: 30.50)
+o Val.  loss: 92.41   (RE: 61.26, KL: 31.15)
+--> Early stopping: 0/50 (BEST: 92.41)
+
+->model saved<-
+beta: 1.0
+Epoch: 157/2000, Time elapsed: 21.81s
+* Train loss: 87.83   (RE: 57.33, KL: 30.49)
+o Val.  loss: 92.60   (RE: 61.46, KL: 31.14)
+--> Early stopping: 0/50 (BEST: 92.41)
+
+beta: 1.0
+Epoch: 158/2000, Time elapsed: 22.18s
+* Train loss: 87.75   (RE: 57.31, KL: 30.45)
+o Val.  loss: 92.42   (RE: 61.16, KL: 31.26)
+--> Early stopping: 1/50 (BEST: 92.41)
+
+beta: 1.0
+Epoch: 159/2000, Time elapsed: 22.21s
+* Train loss: 87.72   (RE: 57.28, KL: 30.44)
+o Val.  loss: 92.31   (RE: 61.34, KL: 30.97)
+--> Early stopping: 2/50 (BEST: 92.41)
+
+->model saved<-
+beta: 1.0
+Epoch: 160/2000, Time elapsed: 22.38s
+* Train loss: 87.67   (RE: 57.26, KL: 30.41)
+o Val.  loss: 92.38   (RE: 61.20, KL: 31.18)
+--> Early stopping: 0/50 (BEST: 92.31)
+
+beta: 1.0
+Epoch: 161/2000, Time elapsed: 22.28s
+* Train loss: 87.63   (RE: 57.27, KL: 30.36)
+o Val.  loss: 92.29   (RE: 61.42, KL: 30.87)
+--> Early stopping: 1/50 (BEST: 92.31)
+
+->model saved<-
+beta: 1.0
+Epoch: 162/2000, Time elapsed: 21.85s
+* Train loss: 87.63   (RE: 57.25, KL: 30.37)
+o Val.  loss: 92.39   (RE: 61.55, KL: 30.83)
+--> Early stopping: 0/50 (BEST: 92.29)
+
+beta: 1.0
+Epoch: 163/2000, Time elapsed: 22.53s
+* Train loss: 87.58   (RE: 57.22, KL: 30.37)
+o Val.  loss: 92.28   (RE: 61.35, KL: 30.94)
+--> Early stopping: 1/50 (BEST: 92.29)
+
+->model saved<-
+beta: 1.0
+Epoch: 164/2000, Time elapsed: 22.32s
+* Train loss: 87.54   (RE: 57.21, KL: 30.34)
+o Val.  loss: 92.33   (RE: 61.10, KL: 31.23)
+--> Early stopping: 0/50 (BEST: 92.28)
+
+beta: 1.0
+Epoch: 165/2000, Time elapsed: 22.40s
+* Train loss: 87.50   (RE: 57.20, KL: 30.30)
+o Val.  loss: 92.30   (RE: 61.41, KL: 30.88)
+--> Early stopping: 1/50 (BEST: 92.28)
+
+beta: 1.0
+Epoch: 166/2000, Time elapsed: 22.32s
+* Train loss: 87.47   (RE: 57.19, KL: 30.28)
+o Val.  loss: 92.21   (RE: 61.10, KL: 31.11)
+--> Early stopping: 2/50 (BEST: 92.28)
+
+->model saved<-
+beta: 1.0
+Epoch: 167/2000, Time elapsed: 22.02s
+* Train loss: 87.46   (RE: 57.20, KL: 30.27)
+o Val.  loss: 92.24   (RE: 61.31, KL: 30.94)
+--> Early stopping: 0/50 (BEST: 92.21)
+
+beta: 1.0
+Epoch: 168/2000, Time elapsed: 22.16s
+* Train loss: 87.39   (RE: 57.15, KL: 30.25)
+o Val.  loss: 92.19   (RE: 61.06, KL: 31.12)
+--> Early stopping: 1/50 (BEST: 92.21)
+
+->model saved<-
+beta: 1.0
+Epoch: 169/2000, Time elapsed: 22.21s
+* Train loss: 87.37   (RE: 57.13, KL: 30.24)
+o Val.  loss: 92.28   (RE: 61.38, KL: 30.89)
+--> Early stopping: 0/50 (BEST: 92.19)
+
+beta: 1.0
+Epoch: 170/2000, Time elapsed: 22.13s
+* Train loss: 87.33   (RE: 57.11, KL: 30.22)
+o Val.  loss: 92.24   (RE: 61.49, KL: 30.75)
+--> Early stopping: 1/50 (BEST: 92.19)
+
+beta: 1.0
+Epoch: 171/2000, Time elapsed: 22.43s
+* Train loss: 87.33   (RE: 57.14, KL: 30.19)
+o Val.  loss: 92.11   (RE: 61.23, KL: 30.87)
+--> Early stopping: 2/50 (BEST: 92.19)
+
+->model saved<-
+beta: 1.0
+Epoch: 172/2000, Time elapsed: 22.26s
+* Train loss: 87.28   (RE: 57.11, KL: 30.17)
+o Val.  loss: 92.28   (RE: 61.51, KL: 30.78)
+--> Early stopping: 0/50 (BEST: 92.11)
+
+beta: 1.0
+Epoch: 173/2000, Time elapsed: 23.64s
+* Train loss: 87.23   (RE: 57.08, KL: 30.15)
+o Val.  loss: 92.22   (RE: 61.29, KL: 30.93)
+--> Early stopping: 1/50 (BEST: 92.11)
+
+beta: 1.0
+Epoch: 174/2000, Time elapsed: 23.68s
+* Train loss: 87.18   (RE: 57.04, KL: 30.15)
+o Val.  loss: 92.19   (RE: 61.15, KL: 31.04)
+--> Early stopping: 2/50 (BEST: 92.11)
+
+beta: 1.0
+Epoch: 175/2000, Time elapsed: 23.59s
+* Train loss: 87.18   (RE: 57.03, KL: 30.15)
+o Val.  loss: 91.99   (RE: 61.29, KL: 30.69)
+--> Early stopping: 3/50 (BEST: 92.11)
+
+->model saved<-
+beta: 1.0
+Epoch: 176/2000, Time elapsed: 23.75s
+* Train loss: 87.14   (RE: 57.01, KL: 30.13)
+o Val.  loss: 92.18   (RE: 61.46, KL: 30.72)
+--> Early stopping: 0/50 (BEST: 91.99)
+
+beta: 1.0
+Epoch: 177/2000, Time elapsed: 21.57s
+* Train loss: 87.11   (RE: 57.02, KL: 30.09)
+o Val.  loss: 92.08   (RE: 61.43, KL: 30.65)
+--> Early stopping: 1/50 (BEST: 91.99)
+
+beta: 1.0
+Epoch: 178/2000, Time elapsed: 22.53s
+* Train loss: 87.10   (RE: 57.00, KL: 30.09)
+o Val.  loss: 92.06   (RE: 61.67, KL: 30.39)
+--> Early stopping: 2/50 (BEST: 91.99)
+
+beta: 1.0
+Epoch: 179/2000, Time elapsed: 22.60s
+* Train loss: 87.02   (RE: 56.97, KL: 30.05)
+o Val.  loss: 92.05   (RE: 61.38, KL: 30.67)
+--> Early stopping: 3/50 (BEST: 91.99)
+
+beta: 1.0
+Epoch: 180/2000, Time elapsed: 22.41s
+* Train loss: 87.01   (RE: 56.95, KL: 30.07)
+o Val.  loss: 92.11   (RE: 61.44, KL: 30.67)
+--> Early stopping: 4/50 (BEST: 91.99)
+
+beta: 1.0
+Epoch: 181/2000, Time elapsed: 22.48s
+* Train loss: 86.99   (RE: 56.95, KL: 30.04)
+o Val.  loss: 92.02   (RE: 61.21, KL: 30.81)
+--> Early stopping: 5/50 (BEST: 91.99)
+
+beta: 1.0
+Epoch: 182/2000, Time elapsed: 22.12s
+* Train loss: 86.94   (RE: 56.91, KL: 30.04)
+o Val.  loss: 92.00   (RE: 61.25, KL: 30.75)
+--> Early stopping: 6/50 (BEST: 91.99)
+
+beta: 1.0
+Epoch: 183/2000, Time elapsed: 21.98s
+* Train loss: 86.94   (RE: 56.91, KL: 30.03)
+o Val.  loss: 91.96   (RE: 61.23, KL: 30.73)
+--> Early stopping: 7/50 (BEST: 91.99)
+
+->model saved<-
+beta: 1.0
+Epoch: 184/2000, Time elapsed: 22.03s
+* Train loss: 86.88   (RE: 56.88, KL: 30.01)
+o Val.  loss: 92.07   (RE: 61.27, KL: 30.79)
+--> Early stopping: 0/50 (BEST: 91.96)
+
+beta: 1.0
+Epoch: 185/2000, Time elapsed: 22.74s
+* Train loss: 86.86   (RE: 56.87, KL: 30.00)
+o Val.  loss: 92.23   (RE: 61.42, KL: 30.81)
+--> Early stopping: 1/50 (BEST: 91.96)
+
+beta: 1.0
+Epoch: 186/2000, Time elapsed: 22.57s
+* Train loss: 86.83   (RE: 56.85, KL: 29.98)
+o Val.  loss: 92.04   (RE: 61.27, KL: 30.77)
+--> Early stopping: 2/50 (BEST: 91.96)
+
+beta: 1.0
+Epoch: 187/2000, Time elapsed: 22.25s
+* Train loss: 86.77   (RE: 56.82, KL: 29.95)
+o Val.  loss: 91.91   (RE: 61.41, KL: 30.49)
+--> Early stopping: 3/50 (BEST: 91.96)
+
+->model saved<-
+beta: 1.0
+Epoch: 188/2000, Time elapsed: 22.13s
+* Train loss: 86.78   (RE: 56.81, KL: 29.97)
+o Val.  loss: 91.99   (RE: 61.35, KL: 30.65)
+--> Early stopping: 0/50 (BEST: 91.91)
+
+beta: 1.0
+Epoch: 189/2000, Time elapsed: 22.13s
+* Train loss: 86.73   (RE: 56.78, KL: 29.95)
+o Val.  loss: 91.95   (RE: 61.42, KL: 30.53)
+--> Early stopping: 1/50 (BEST: 91.91)
+
+beta: 1.0
+Epoch: 190/2000, Time elapsed: 22.49s
+* Train loss: 86.73   (RE: 56.78, KL: 29.95)
+o Val.  loss: 91.98   (RE: 61.44, KL: 30.55)
+--> Early stopping: 2/50 (BEST: 91.91)
+
+beta: 1.0
+Epoch: 191/2000, Time elapsed: 22.28s
+* Train loss: 86.69   (RE: 56.76, KL: 29.93)
+o Val.  loss: 91.93   (RE: 61.19, KL: 30.74)
+--> Early stopping: 3/50 (BEST: 91.91)
+
+beta: 1.0
+Epoch: 192/2000, Time elapsed: 22.38s
+* Train loss: 86.64   (RE: 56.74, KL: 29.89)
+o Val.  loss: 92.01   (RE: 61.24, KL: 30.78)
+--> Early stopping: 4/50 (BEST: 91.91)
+
+beta: 1.0
+Epoch: 193/2000, Time elapsed: 23.07s
+* Train loss: 86.66   (RE: 56.74, KL: 29.92)
+o Val.  loss: 91.96   (RE: 61.48, KL: 30.48)
+--> Early stopping: 5/50 (BEST: 91.91)
+
+beta: 1.0
+Epoch: 194/2000, Time elapsed: 22.46s
+* Train loss: 86.58   (RE: 56.72, KL: 29.85)
+o Val.  loss: 92.01   (RE: 61.40, KL: 30.61)
+--> Early stopping: 6/50 (BEST: 91.91)
+
+beta: 1.0
+Epoch: 195/2000, Time elapsed: 22.46s
+* Train loss: 86.54   (RE: 56.67, KL: 29.88)
+o Val.  loss: 91.96   (RE: 61.57, KL: 30.39)
+--> Early stopping: 7/50 (BEST: 91.91)
+
+beta: 1.0
+Epoch: 196/2000, Time elapsed: 22.29s
+* Train loss: 86.55   (RE: 56.69, KL: 29.86)
+o Val.  loss: 91.91   (RE: 61.17, KL: 30.73)
+--> Early stopping: 8/50 (BEST: 91.91)
+
+->model saved<-
+beta: 1.0
+Epoch: 197/2000, Time elapsed: 22.15s
+* Train loss: 86.50   (RE: 56.64, KL: 29.86)
+o Val.  loss: 91.90   (RE: 61.40, KL: 30.50)
+--> Early stopping: 0/50 (BEST: 91.91)
+
+->model saved<-
+beta: 1.0
+Epoch: 198/2000, Time elapsed: 21.89s
+* Train loss: 86.49   (RE: 56.64, KL: 29.85)
+o Val.  loss: 92.05   (RE: 61.36, KL: 30.69)
+--> Early stopping: 0/50 (BEST: 91.90)
+
+beta: 1.0
+Epoch: 199/2000, Time elapsed: 21.61s
+* Train loss: 86.47   (RE: 56.61, KL: 29.86)
+o Val.  loss: 91.98   (RE: 61.34, KL: 30.64)
+--> Early stopping: 1/50 (BEST: 91.90)
+
+beta: 1.0
+Epoch: 200/2000, Time elapsed: 22.41s
+* Train loss: 86.43   (RE: 56.60, KL: 29.83)
+o Val.  loss: 91.92   (RE: 61.37, KL: 30.55)
+--> Early stopping: 2/50 (BEST: 91.90)
+
+beta: 1.0
+Epoch: 201/2000, Time elapsed: 22.30s
+* Train loss: 86.41   (RE: 56.59, KL: 29.82)
+o Val.  loss: 91.95   (RE: 61.43, KL: 30.52)
+--> Early stopping: 3/50 (BEST: 91.90)
+
+beta: 1.0
+Epoch: 202/2000, Time elapsed: 22.17s
+* Train loss: 86.40   (RE: 56.59, KL: 29.81)
+o Val.  loss: 91.92   (RE: 61.47, KL: 30.45)
+--> Early stopping: 4/50 (BEST: 91.90)
+
+beta: 1.0
+Epoch: 203/2000, Time elapsed: 22.38s
+* Train loss: 86.32   (RE: 56.51, KL: 29.82)
+o Val.  loss: 91.91   (RE: 61.43, KL: 30.48)
+--> Early stopping: 5/50 (BEST: 91.90)
+
+beta: 1.0
+Epoch: 204/2000, Time elapsed: 22.24s
+* Train loss: 86.32   (RE: 56.52, KL: 29.79)
+o Val.  loss: 91.93   (RE: 61.40, KL: 30.53)
+--> Early stopping: 6/50 (BEST: 91.90)
+
+beta: 1.0
+Epoch: 205/2000, Time elapsed: 22.34s
+* Train loss: 86.32   (RE: 56.54, KL: 29.78)
+o Val.  loss: 91.90   (RE: 61.50, KL: 30.40)
+--> Early stopping: 7/50 (BEST: 91.90)
+
+beta: 1.0
+Epoch: 206/2000, Time elapsed: 22.14s
+* Train loss: 86.27   (RE: 56.51, KL: 29.76)
+o Val.  loss: 91.70   (RE: 61.40, KL: 30.30)
+--> Early stopping: 8/50 (BEST: 91.90)
+
+->model saved<-
+beta: 1.0
+Epoch: 207/2000, Time elapsed: 22.01s
+* Train loss: 86.25   (RE: 56.51, KL: 29.74)
+o Val.  loss: 91.81   (RE: 61.35, KL: 30.46)
+--> Early stopping: 0/50 (BEST: 91.70)
+
+beta: 1.0
+Epoch: 208/2000, Time elapsed: 22.23s
+* Train loss: 86.24   (RE: 56.47, KL: 29.78)
+o Val.  loss: 91.98   (RE: 61.27, KL: 30.71)
+--> Early stopping: 1/50 (BEST: 91.70)
+
+beta: 1.0
+Epoch: 209/2000, Time elapsed: 22.60s
+* Train loss: 86.21   (RE: 56.44, KL: 29.78)
+o Val.  loss: 91.89   (RE: 61.29, KL: 30.60)
+--> Early stopping: 2/50 (BEST: 91.70)
+
+beta: 1.0
+Epoch: 210/2000, Time elapsed: 21.88s
+* Train loss: 86.18   (RE: 56.45, KL: 29.73)
+o Val.  loss: 91.76   (RE: 61.32, KL: 30.44)
+--> Early stopping: 3/50 (BEST: 91.70)
+
+beta: 1.0
+Epoch: 211/2000, Time elapsed: 22.57s
+* Train loss: 86.16   (RE: 56.41, KL: 29.75)
+o Val.  loss: 91.82   (RE: 61.27, KL: 30.54)
+--> Early stopping: 4/50 (BEST: 91.70)
+
+beta: 1.0
+Epoch: 212/2000, Time elapsed: 22.27s
+* Train loss: 86.14   (RE: 56.39, KL: 29.75)
+o Val.  loss: 91.84   (RE: 61.20, KL: 30.64)
+--> Early stopping: 5/50 (BEST: 91.70)
+
+beta: 1.0
+Epoch: 213/2000, Time elapsed: 22.27s
+* Train loss: 86.11   (RE: 56.39, KL: 29.72)
+o Val.  loss: 91.91   (RE: 61.31, KL: 30.59)
+--> Early stopping: 6/50 (BEST: 91.70)
+
+beta: 1.0
+Epoch: 214/2000, Time elapsed: 22.44s
+* Train loss: 86.10   (RE: 56.37, KL: 29.74)
+o Val.  loss: 91.76   (RE: 61.60, KL: 30.16)
+--> Early stopping: 7/50 (BEST: 91.70)
+
+beta: 1.0
+Epoch: 215/2000, Time elapsed: 22.16s
+* Train loss: 86.06   (RE: 56.34, KL: 29.71)
+o Val.  loss: 91.76   (RE: 61.42, KL: 30.34)
+--> Early stopping: 8/50 (BEST: 91.70)
+
+beta: 1.0
+Epoch: 216/2000, Time elapsed: 22.03s
+* Train loss: 86.06   (RE: 56.33, KL: 29.73)
+o Val.  loss: 91.84   (RE: 61.39, KL: 30.45)
+--> Early stopping: 9/50 (BEST: 91.70)
+
+beta: 1.0
+Epoch: 217/2000, Time elapsed: 22.26s
+* Train loss: 86.04   (RE: 56.35, KL: 29.69)
+o Val.  loss: 91.68   (RE: 61.30, KL: 30.37)
+--> Early stopping: 10/50 (BEST: 91.70)
+
+->model saved<-
+beta: 1.0
+Epoch: 218/2000, Time elapsed: 22.21s
+* Train loss: 85.98   (RE: 56.31, KL: 29.67)
+o Val.  loss: 91.97   (RE: 61.42, KL: 30.55)
+--> Early stopping: 0/50 (BEST: 91.68)
+
+beta: 1.0
+Epoch: 219/2000, Time elapsed: 22.78s
+* Train loss: 85.95   (RE: 56.28, KL: 29.67)
+o Val.  loss: 92.04   (RE: 61.68, KL: 30.36)
+--> Early stopping: 1/50 (BEST: 91.68)
+
+beta: 1.0
+Epoch: 220/2000, Time elapsed: 22.88s
+* Train loss: 85.93   (RE: 56.27, KL: 29.66)
+o Val.  loss: 91.84   (RE: 61.33, KL: 30.50)
+--> Early stopping: 2/50 (BEST: 91.68)
+
+beta: 1.0
+Epoch: 221/2000, Time elapsed: 22.29s
+* Train loss: 85.93   (RE: 56.26, KL: 29.67)
+o Val.  loss: 91.71   (RE: 61.33, KL: 30.37)
+--> Early stopping: 3/50 (BEST: 91.68)
+
+beta: 1.0
+Epoch: 222/2000, Time elapsed: 22.35s
+* Train loss: 85.90   (RE: 56.25, KL: 29.65)
+o Val.  loss: 91.83   (RE: 61.45, KL: 30.38)
+--> Early stopping: 4/50 (BEST: 91.68)
+
+beta: 1.0
+Epoch: 223/2000, Time elapsed: 22.34s
+* Train loss: 85.87   (RE: 56.21, KL: 29.65)
+o Val.  loss: 91.69   (RE: 61.01, KL: 30.68)
+--> Early stopping: 5/50 (BEST: 91.68)
+
+beta: 1.0
+Epoch: 224/2000, Time elapsed: 22.18s
+* Train loss: 85.85   (RE: 56.19, KL: 29.66)
+o Val.  loss: 91.67   (RE: 61.35, KL: 30.31)
+--> Early stopping: 6/50 (BEST: 91.68)
+
+->model saved<-
+beta: 1.0
+Epoch: 225/2000, Time elapsed: 22.74s
+* Train loss: 85.83   (RE: 56.19, KL: 29.64)
+o Val.  loss: 91.71   (RE: 61.23, KL: 30.48)
+--> Early stopping: 0/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 226/2000, Time elapsed: 22.36s
+* Train loss: 85.77   (RE: 56.14, KL: 29.63)
+o Val.  loss: 91.95   (RE: 61.56, KL: 30.39)
+--> Early stopping: 1/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 227/2000, Time elapsed: 22.24s
+* Train loss: 85.80   (RE: 56.16, KL: 29.64)
+o Val.  loss: 91.85   (RE: 61.70, KL: 30.15)
+--> Early stopping: 2/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 228/2000, Time elapsed: 22.57s
+* Train loss: 85.78   (RE: 56.16, KL: 29.62)
+o Val.  loss: 91.84   (RE: 61.30, KL: 30.53)
+--> Early stopping: 3/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 229/2000, Time elapsed: 22.18s
+* Train loss: 85.74   (RE: 56.14, KL: 29.61)
+o Val.  loss: 91.74   (RE: 61.62, KL: 30.12)
+--> Early stopping: 4/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 230/2000, Time elapsed: 22.52s
+* Train loss: 85.71   (RE: 56.12, KL: 29.59)
+o Val.  loss: 91.73   (RE: 61.44, KL: 30.29)
+--> Early stopping: 5/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 231/2000, Time elapsed: 22.10s
+* Train loss: 85.69   (RE: 56.10, KL: 29.59)
+o Val.  loss: 91.78   (RE: 61.12, KL: 30.66)
+--> Early stopping: 6/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 232/2000, Time elapsed: 22.18s
+* Train loss: 85.69   (RE: 56.09, KL: 29.60)
+o Val.  loss: 91.85   (RE: 61.30, KL: 30.55)
+--> Early stopping: 7/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 233/2000, Time elapsed: 22.22s
+* Train loss: 85.65   (RE: 56.06, KL: 29.60)
+o Val.  loss: 91.81   (RE: 61.38, KL: 30.43)
+--> Early stopping: 8/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 234/2000, Time elapsed: 22.23s
+* Train loss: 85.61   (RE: 56.03, KL: 29.59)
+o Val.  loss: 91.70   (RE: 61.41, KL: 30.29)
+--> Early stopping: 9/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 235/2000, Time elapsed: 22.36s
+* Train loss: 85.63   (RE: 56.04, KL: 29.58)
+o Val.  loss: 91.80   (RE: 61.16, KL: 30.64)
+--> Early stopping: 10/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 236/2000, Time elapsed: 22.43s
+* Train loss: 85.60   (RE: 56.02, KL: 29.57)
+o Val.  loss: 91.80   (RE: 61.28, KL: 30.52)
+--> Early stopping: 11/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 237/2000, Time elapsed: 22.36s
+* Train loss: 85.56   (RE: 55.98, KL: 29.58)
+o Val.  loss: 91.68   (RE: 61.40, KL: 30.29)
+--> Early stopping: 12/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 238/2000, Time elapsed: 22.22s
+* Train loss: 85.57   (RE: 56.00, KL: 29.57)
+o Val.  loss: 91.85   (RE: 61.44, KL: 30.41)
+--> Early stopping: 13/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 239/2000, Time elapsed: 22.09s
+* Train loss: 85.55   (RE: 55.96, KL: 29.58)
+o Val.  loss: 91.67   (RE: 61.19, KL: 30.49)
+--> Early stopping: 14/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 240/2000, Time elapsed: 21.89s
+* Train loss: 85.51   (RE: 55.97, KL: 29.54)
+o Val.  loss: 91.74   (RE: 61.40, KL: 30.33)
+--> Early stopping: 15/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 241/2000, Time elapsed: 22.49s
+* Train loss: 85.48   (RE: 55.91, KL: 29.57)
+o Val.  loss: 91.81   (RE: 61.53, KL: 30.28)
+--> Early stopping: 16/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 242/2000, Time elapsed: 22.21s
+* Train loss: 85.49   (RE: 55.94, KL: 29.55)
+o Val.  loss: 91.76   (RE: 61.53, KL: 30.23)
+--> Early stopping: 17/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 243/2000, Time elapsed: 22.21s
+* Train loss: 85.45   (RE: 55.91, KL: 29.54)
+o Val.  loss: 91.81   (RE: 61.53, KL: 30.28)
+--> Early stopping: 18/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 244/2000, Time elapsed: 22.30s
+* Train loss: 85.43   (RE: 55.89, KL: 29.54)
+o Val.  loss: 91.70   (RE: 61.57, KL: 30.13)
+--> Early stopping: 19/50 (BEST: 91.67)
+
+beta: 1.0
+Epoch: 245/2000, Time elapsed: 21.78s
+* Train loss: 85.42   (RE: 55.87, KL: 29.54)
+o Val.  loss: 91.62   (RE: 61.52, KL: 30.10)
+--> Early stopping: 20/50 (BEST: 91.67)
+
+->model saved<-
+beta: 1.0
+Epoch: 246/2000, Time elapsed: 22.70s
+* Train loss: 85.38   (RE: 55.85, KL: 29.53)
+o Val.  loss: 91.77   (RE: 61.50, KL: 30.27)
+--> Early stopping: 0/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 247/2000, Time elapsed: 22.57s
+* Train loss: 85.39   (RE: 55.85, KL: 29.53)
+o Val.  loss: 91.81   (RE: 61.62, KL: 30.18)
+--> Early stopping: 1/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 248/2000, Time elapsed: 22.25s
+* Train loss: 85.38   (RE: 55.85, KL: 29.53)
+o Val.  loss: 91.70   (RE: 61.33, KL: 30.37)
+--> Early stopping: 2/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 249/2000, Time elapsed: 22.09s
+* Train loss: 85.32   (RE: 55.79, KL: 29.53)
+o Val.  loss: 91.88   (RE: 61.34, KL: 30.55)
+--> Early stopping: 3/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 250/2000, Time elapsed: 22.21s
+* Train loss: 85.32   (RE: 55.81, KL: 29.51)
+o Val.  loss: 91.73   (RE: 61.42, KL: 30.31)
+--> Early stopping: 4/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 251/2000, Time elapsed: 22.07s
+* Train loss: 85.32   (RE: 55.79, KL: 29.53)
+o Val.  loss: 91.73   (RE: 61.32, KL: 30.41)
+--> Early stopping: 5/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 252/2000, Time elapsed: 22.48s
+* Train loss: 85.30   (RE: 55.79, KL: 29.51)
+o Val.  loss: 91.80   (RE: 61.54, KL: 30.26)
+--> Early stopping: 6/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 253/2000, Time elapsed: 21.60s
+* Train loss: 85.26   (RE: 55.75, KL: 29.50)
+o Val.  loss: 91.89   (RE: 61.44, KL: 30.45)
+--> Early stopping: 7/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 254/2000, Time elapsed: 22.41s
+* Train loss: 85.23   (RE: 55.75, KL: 29.48)
+o Val.  loss: 91.82   (RE: 61.34, KL: 30.48)
+--> Early stopping: 8/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 255/2000, Time elapsed: 21.97s
+* Train loss: 85.21   (RE: 55.73, KL: 29.48)
+o Val.  loss: 91.81   (RE: 61.47, KL: 30.33)
+--> Early stopping: 9/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 256/2000, Time elapsed: 22.11s
+* Train loss: 85.20   (RE: 55.73, KL: 29.46)
+o Val.  loss: 91.74   (RE: 61.53, KL: 30.21)
+--> Early stopping: 10/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 257/2000, Time elapsed: 22.58s
+* Train loss: 85.19   (RE: 55.70, KL: 29.49)
+o Val.  loss: 91.91   (RE: 61.54, KL: 30.38)
+--> Early stopping: 11/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 258/2000, Time elapsed: 22.12s
+* Train loss: 85.18   (RE: 55.70, KL: 29.48)
+o Val.  loss: 91.82   (RE: 61.48, KL: 30.34)
+--> Early stopping: 12/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 259/2000, Time elapsed: 22.28s
+* Train loss: 85.17   (RE: 55.68, KL: 29.49)
+o Val.  loss: 91.79   (RE: 61.54, KL: 30.25)
+--> Early stopping: 13/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 260/2000, Time elapsed: 22.28s
+* Train loss: 85.13   (RE: 55.67, KL: 29.46)
+o Val.  loss: 91.93   (RE: 61.45, KL: 30.48)
+--> Early stopping: 14/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 261/2000, Time elapsed: 22.24s
+* Train loss: 85.09   (RE: 55.62, KL: 29.47)
+o Val.  loss: 91.69   (RE: 61.61, KL: 30.08)
+--> Early stopping: 15/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 262/2000, Time elapsed: 22.47s
+* Train loss: 85.09   (RE: 55.62, KL: 29.46)
+o Val.  loss: 91.86   (RE: 61.64, KL: 30.22)
+--> Early stopping: 16/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 263/2000, Time elapsed: 21.98s
+* Train loss: 85.06   (RE: 55.62, KL: 29.44)
+o Val.  loss: 91.75   (RE: 61.39, KL: 30.36)
+--> Early stopping: 17/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 264/2000, Time elapsed: 22.23s
+* Train loss: 85.06   (RE: 55.60, KL: 29.46)
+o Val.  loss: 91.86   (RE: 61.43, KL: 30.43)
+--> Early stopping: 18/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 265/2000, Time elapsed: 22.04s
+* Train loss: 85.04   (RE: 55.57, KL: 29.47)
+o Val.  loss: 91.76   (RE: 61.48, KL: 30.28)
+--> Early stopping: 19/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 266/2000, Time elapsed: 21.78s
+* Train loss: 85.03   (RE: 55.57, KL: 29.46)
+o Val.  loss: 91.71   (RE: 61.48, KL: 30.23)
+--> Early stopping: 20/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 267/2000, Time elapsed: 22.31s
+* Train loss: 85.00   (RE: 55.55, KL: 29.45)
+o Val.  loss: 91.89   (RE: 61.55, KL: 30.34)
+--> Early stopping: 21/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 268/2000, Time elapsed: 22.80s
+* Train loss: 84.99   (RE: 55.56, KL: 29.43)
+o Val.  loss: 91.77   (RE: 61.41, KL: 30.37)
+--> Early stopping: 22/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 269/2000, Time elapsed: 22.32s
+* Train loss: 84.96   (RE: 55.53, KL: 29.43)
+o Val.  loss: 91.89   (RE: 61.50, KL: 30.39)
+--> Early stopping: 23/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 270/2000, Time elapsed: 22.49s
+* Train loss: 84.97   (RE: 55.51, KL: 29.46)
+o Val.  loss: 91.87   (RE: 61.53, KL: 30.34)
+--> Early stopping: 24/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 271/2000, Time elapsed: 22.21s
+* Train loss: 84.94   (RE: 55.53, KL: 29.41)
+o Val.  loss: 91.87   (RE: 61.44, KL: 30.43)
+--> Early stopping: 25/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 272/2000, Time elapsed: 22.28s
+* Train loss: 84.91   (RE: 55.47, KL: 29.44)
+o Val.  loss: 91.71   (RE: 61.48, KL: 30.22)
+--> Early stopping: 26/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 273/2000, Time elapsed: 21.86s
+* Train loss: 84.90   (RE: 55.47, KL: 29.43)
+o Val.  loss: 91.85   (RE: 61.43, KL: 30.43)
+--> Early stopping: 27/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 274/2000, Time elapsed: 22.24s
+* Train loss: 84.88   (RE: 55.44, KL: 29.44)
+o Val.  loss: 91.91   (RE: 61.81, KL: 30.10)
+--> Early stopping: 28/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 275/2000, Time elapsed: 21.87s
+* Train loss: 84.90   (RE: 55.48, KL: 29.42)
+o Val.  loss: 91.72   (RE: 61.55, KL: 30.17)
+--> Early stopping: 29/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 276/2000, Time elapsed: 22.12s
+* Train loss: 84.84   (RE: 55.42, KL: 29.43)
+o Val.  loss: 91.90   (RE: 61.69, KL: 30.21)
+--> Early stopping: 30/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 277/2000, Time elapsed: 22.20s
+* Train loss: 84.80   (RE: 55.41, KL: 29.39)
+o Val.  loss: 91.87   (RE: 61.54, KL: 30.33)
+--> Early stopping: 31/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 278/2000, Time elapsed: 22.37s
+* Train loss: 84.82   (RE: 55.43, KL: 29.39)
+o Val.  loss: 91.84   (RE: 61.52, KL: 30.32)
+--> Early stopping: 32/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 279/2000, Time elapsed: 22.17s
+* Train loss: 84.79   (RE: 55.40, KL: 29.39)
+o Val.  loss: 91.79   (RE: 61.51, KL: 30.28)
+--> Early stopping: 33/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 280/2000, Time elapsed: 22.56s
+* Train loss: 84.78   (RE: 55.37, KL: 29.40)
+o Val.  loss: 91.85   (RE: 61.56, KL: 30.29)
+--> Early stopping: 34/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 281/2000, Time elapsed: 22.02s
+* Train loss: 84.76   (RE: 55.34, KL: 29.43)
+o Val.  loss: 91.83   (RE: 61.77, KL: 30.06)
+--> Early stopping: 35/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 282/2000, Time elapsed: 22.32s
+* Train loss: 84.74   (RE: 55.37, KL: 29.37)
+o Val.  loss: 92.03   (RE: 61.55, KL: 30.48)
+--> Early stopping: 36/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 283/2000, Time elapsed: 22.46s
+* Train loss: 84.73   (RE: 55.33, KL: 29.40)
+o Val.  loss: 91.83   (RE: 61.48, KL: 30.35)
+--> Early stopping: 37/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 284/2000, Time elapsed: 22.19s
+* Train loss: 84.74   (RE: 55.33, KL: 29.41)
+o Val.  loss: 91.95   (RE: 61.63, KL: 30.33)
+--> Early stopping: 38/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 285/2000, Time elapsed: 22.21s
+* Train loss: 84.71   (RE: 55.34, KL: 29.37)
+o Val.  loss: 91.93   (RE: 61.64, KL: 30.29)
+--> Early stopping: 39/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 286/2000, Time elapsed: 22.12s
+* Train loss: 84.71   (RE: 55.31, KL: 29.40)
+o Val.  loss: 91.72   (RE: 61.57, KL: 30.15)
+--> Early stopping: 40/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 287/2000, Time elapsed: 21.44s
+* Train loss: 84.69   (RE: 55.29, KL: 29.40)
+o Val.  loss: 91.76   (RE: 61.54, KL: 30.22)
+--> Early stopping: 41/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 288/2000, Time elapsed: 21.83s
+* Train loss: 84.66   (RE: 55.28, KL: 29.38)
+o Val.  loss: 91.95   (RE: 61.78, KL: 30.17)
+--> Early stopping: 42/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 289/2000, Time elapsed: 21.94s
+* Train loss: 84.64   (RE: 55.26, KL: 29.38)
+o Val.  loss: 91.84   (RE: 61.54, KL: 30.30)
+--> Early stopping: 43/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 290/2000, Time elapsed: 21.86s
+* Train loss: 84.63   (RE: 55.24, KL: 29.40)
+o Val.  loss: 92.10   (RE: 61.74, KL: 30.35)
+--> Early stopping: 44/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 291/2000, Time elapsed: 22.29s
+* Train loss: 84.62   (RE: 55.23, KL: 29.38)
+o Val.  loss: 91.91   (RE: 61.57, KL: 30.34)
+--> Early stopping: 45/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 292/2000, Time elapsed: 23.06s
+* Train loss: 84.59   (RE: 55.21, KL: 29.38)
+o Val.  loss: 91.91   (RE: 61.61, KL: 30.29)
+--> Early stopping: 46/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 293/2000, Time elapsed: 23.70s
+* Train loss: 84.56   (RE: 55.21, KL: 29.34)
+o Val.  loss: 91.96   (RE: 61.57, KL: 30.39)
+--> Early stopping: 47/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 294/2000, Time elapsed: 23.43s
+* Train loss: 84.56   (RE: 55.17, KL: 29.40)
+o Val.  loss: 92.04   (RE: 61.59, KL: 30.45)
+--> Early stopping: 48/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 295/2000, Time elapsed: 24.68s
+* Train loss: 84.54   (RE: 55.16, KL: 29.37)
+o Val.  loss: 91.89   (RE: 61.70, KL: 30.18)
+--> Early stopping: 49/50 (BEST: 91.62)
+
+beta: 1.0
+Epoch: 296/2000, Time elapsed: 23.62s
+* Train loss: 84.52   (RE: 55.17, KL: 29.35)
+o Val.  loss: 91.92   (RE: 61.77, KL: 30.15)
+--> Early stopping: 50/50 (BEST: 91.62)
+
+Test lower-bound value 90.91 in time: 0.35s
+Train lower-bound value 0.00 in time: 0.00s
+0.00%
+1.00%
+2.00%
+3.00%
+4.00%
+5.00%
+6.00%
+7.00%
+8.00%
+9.00%
+10.00%
+11.00%
+12.00%
+13.00%
+14.00%
+15.00%
+16.00%
+17.00%
+18.00%
+19.00%
+20.00%
+21.00%
+22.00%
+23.00%
+24.00%
+25.00%
+26.00%
+27.00%
+28.00%
+29.00%
+30.00%
+31.00%
+32.00%
+33.00%
+34.00%
+35.00%
+36.00%
+37.00%
+38.00%
+39.00%
+40.00%
+41.00%
+42.00%
+43.00%
+44.00%
+45.00%
+46.00%
+47.00%
+48.00%
+49.00%
+50.00%
+51.00%
+52.00%
+53.00%
+54.00%
+55.00%
+56.00%
+57.00%
+58.00%
+59.00%
+60.00%
+61.00%
+62.00%
+63.00%
+64.00%
+65.00%
+66.00%
+67.00%
+68.00%
+69.00%
+70.00%
+71.00%
+72.00%
+73.00%
+74.00%
+75.00%
+76.00%
+77.00%
+78.00%
+79.00%
+80.00%
+81.00%
+82.00%
+83.00%
+84.00%
+85.00%
+86.00%
+87.00%
+88.00%
+89.00%
+90.00%
+91.00%
+92.00%
+93.00%
+94.00%
+95.00%
+96.00%
+97.00%
+98.00%
+99.00%
+Test log_likelihood value 84.83 in time: 1069.86s
+Train log_likelihood value 0.00 in time: 0.00s
+FINAL EVALUATION ON TEST SET
+LogL (TEST): 84.83
+LogL (TRAIN): 0.00
+ELBO (TEST): 90.91
+ELBO (TRAIN): 0.00
+Loss: 90.90
+RE: 60.96
+KL: 29.94
+✅ Training finished in 130.71 minutes. Log saved to: snapshots/2026-01-22 02:16:12_static_mnist_hvae_2level_vampprior_K500_weightedFalse_z1_40_seed420/eval_results/runtime.txt
+-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
