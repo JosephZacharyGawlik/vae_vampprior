@@ -1,3 +1,5 @@
+Thesis Visualizations can be found in this [Drive](https://drive.google.com/drive/u/0/folders/1Ul9ZH33ty2Su_K195VD48S7W9M5b__Zd) in this [notebook](https://colab.research.google.com/drive/1xF_75HlxFmqJTQbGYtifGxJs-_G0dcjT?usp=drive_link).
+
 # VAE with a VampPrior
 This is a PyTorch implementation of a new prior ("Variational Mixture of Posteriors" prior, or VampPrior for short) for the variational auto-encoder framework with one layer and two layers of stochastic hidden units as described in the following paper:
 * Jakub M. Tomczak, Max Welling, VAE with a VampPrior, [arXiv preprint](https://arxiv.org/abs/1705.07120), 2017
